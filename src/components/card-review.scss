@@ -1,0 +1,41 @@
+.card-title {
+	display: flex;
+	justify-content: flex-start;
+	text-align: left;
+	line-height: 2em;
+}
+
+.text-container {
+	align-self: center;
+}
+
+ion-card-header {
+	display: flex;
+	justify-content: space-between;
+}
+
+ion-card-title {
+	font-size: 12pt;
+	color: #223e5c;
+}
+
+ion-card-subtitle {
+	color: #a6b0bf;
+	font-size: 11pt;
+	font-weight: 400;
+	display: flex;
+	justify-content: flex-start;
+	margin-top: .5rem;
+
+	span {
+		line-height: 17pt;
+		margin-left: .5rem;
+	}
+
+}
+
+ion-card-content {
+	font-size: 11pt;
+	font-weight: 400;
+	color: rgba(34, 62, 92, 0.8);
+}

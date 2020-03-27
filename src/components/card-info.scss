@@ -1,0 +1,103 @@
+
+
+ion-col h5 {
+	margin: 2em 0.5em 0;
+	font-weight: 600;
+	font-size: 18px;
+	color: #223e5c;
+}
+
+.icon-card {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    padding: 1em;
+    margin: auto;
+
+    ion-icon {
+        font-size: 24pt;
+    }
+
+    p {
+        font-size: 16px;
+        color: #223e5c;
+        font-weight: 600;
+        margin: 0 0 .5em 0;  
+    }
+}
+
+.round-back {
+    width: 4em;
+    height: 4em;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.red {
+    background: #F7685B;
+}
+
+.green {
+    background: #21A472;
+}
+
+.blue {
+    background: #5784BE;
+}
+
+.yellow {
+    background: #E38E3F;
+}
+
+.light-green {
+    background: #6ED5B0;
+}
+
+.black {
+    background: #223E5C;
+}
+
+ion-card {
+	margin: 1em 1.5em;
+  }
+  
+  ion-avatar {
+	width: 40pt;
+	height: 40pt;
+	margin-right: 0.8em;
+  }
+  .card-title {
+	display: flex;
+	justify-content: flex-start;
+	text-align: left;
+	line-height: 2em;
+  }
+  
+  ion-card-header {
+	display: flex;
+	justify-content: space-between;
+  }
+  
+  ion-card-title {
+	font-size: 16px;
+	color: #223e5c;
+  }
+  
+  ion-card-subtitle {
+	color: #a6b0bf;
+	font-size: 12px;
+	font-weight: 400;
+  }
+  ion-card-content {
+	font-size: 12px;
+	font-weight: 400;
+	color: #a6b0bf;
+  }
+  
+  .ion-badge {
+	background: rgba(110, 213, 176, 0.6);
+	font-weight: 400;
+  }

@@ -1,0 +1,28 @@
+ion-content {
+	--ion-background-color: #f9fafb;
+}
+
+ion-title {
+	font-weight: 600;
+	text-align: end;
+}
+
+ion-list {
+	h2 {
+		font-weight: 600;
+		font-size: 12pt;
+		line-height: 18pt;
+		color: #223e5c;
+	}
+
+	p {
+		font-weight: normal;
+		font-size: 10pt;
+		line-height: 18pt;
+		color: #223e5ccc;
+	}
+}
+
+ion-button {
+	margin: 1rem auto 2rem;
+}

@@ -1,0 +1,214 @@
+/* Ionic Variables and Theming. For more info, please see:
+http://ionicframework.com/docs/theming/ */
+
+/* Google font import */
+@import url("https://fonts.googleapis.com/css?family=Poppins:400,500,600,700&display=swap");
+
+/** Ionic CSS Variables **/
+:root {
+	--ion-color-primary: #21A472;
+	--ion-color-primary-rgb: 33,164,114;
+	--ion-color-primary-contrast: #ffffff;
+	--ion-color-primary-contrast-rgb: 255,255,255;
+	--ion-color-primary-shade: #1d9064;
+	--ion-color-primary-tint: #37ad80;
+  
+	--ion-color-secondary: #223E5C;
+	--ion-color-secondary-rgb: 34,62,92;
+	--ion-color-secondary-contrast: #ffffff;
+	--ion-color-secondary-contrast-rgb: 255,255,255;
+	--ion-color-secondary-shade: #1e3751;
+	--ion-color-secondary-tint: #38516c;
+  
+	--ion-color-tertiary: #F7685B;
+	--ion-color-tertiary-rgb: 247,104,91;
+	--ion-color-tertiary-contrast: #000000;
+	--ion-color-tertiary-contrast-rgb: 0,0,0;
+	--ion-color-tertiary-shade: #d95c50;
+	--ion-color-tertiary-tint: #f8776b;
+  
+	--ion-color-success: #21A472;
+	--ion-color-success-rgb: 33,164,114;
+	--ion-color-success-contrast: #ffffff;
+	--ion-color-success-contrast-rgb: 255,255,255;
+	--ion-color-success-shade: #1d9064;
+	--ion-color-success-tint: #37ad80;
+  
+	--ion-color-warning: #ffce00;
+	--ion-color-warning-rgb: 255,206,0;
+	--ion-color-warning-contrast: #ffffff;
+	--ion-color-warning-contrast-rgb: 255,255,255;
+	--ion-color-warning-shade: #e0b500;
+	--ion-color-warning-tint: #ffd31a;
+  
+	--ion-color-danger: #F7685B;
+	--ion-color-danger-rgb: 247,104,91;
+	--ion-color-danger-contrast: #000000;
+	--ion-color-danger-contrast-rgb: 0,0,0;
+	--ion-color-danger-shade: #d95c50;
+	--ion-color-danger-tint: #f8776b;
+  
+	--ion-color-dark: #223E5C;
+	--ion-color-dark-rgb: 34,62,92;
+	--ion-color-dark-contrast: #ffffff;
+	--ion-color-dark-contrast-rgb: 255,255,255;
+	--ion-color-dark-shade: #1e3751;
+	--ion-color-dark-tint: #38516c;
+  
+	--ion-color-medium: #A6B0BF;
+	--ion-color-medium-rgb: 166,176,191;
+	--ion-color-medium-contrast: #000000;
+	--ion-color-medium-contrast-rgb: 0,0,0;
+	--ion-color-medium-shade: #929ba8;
+	--ion-color-medium-tint: #afb8c5;
+  
+	--ion-color-light: #f4f5f8;
+	--ion-color-light-rgb: 244,244,244;
+	--ion-color-light-contrast: #000000;
+	--ion-color-light-contrast-rgb: 0,0,0;
+	--ion-color-light-shade: #d7d8da;
+	--ion-color-light-tint: #f5f6f9;
+  
+	--ion-font-family: 'Poppins', sans-serif;
+	--ion-background-color: #F9FAFB;
+}
+
+ion-searchbar input {
+	border-bottom: 2px solid #223e5c !important;
+	box-shadow: none !important;
+}
+
+.ios ion-searchbar input {
+	border-bottom: 2px solid #223e5c !important;
+	box-shadow: none !important;
+	border-radius: 0 !important;
+	--background: #F9FAFB;
+}
+
+.searchbar-input-container,
+.sc-ion-searchbar-ios {
+	/*  margin-left: 0.5em;
+    margin-right: 0.5em; */
+	width: auto;
+}
+
+.title-ios {
+	padding-right: 1.2rem;
+}
+
+.ios .ion-header {
+	--background: #F9FAFB !important;
+}
+
+.column-evenly {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-evenly;
+}
+
+.ion-button {
+	font-weight: 500 !important;
+	font-size: 11pt !important;
+	text-transform: unset !important;
+}
+
+.button-size {
+	height: 34pt;
+	width: 70%;
+	margin: auto;
+}
+
+.ion-card {
+	box-shadow: 0px 4px 26px rgba(0, 0, 0, 0.06) !important;
+	border-radius: 6px !important;
+}
+
+
+.m-top {
+	margin-top: 1rem;
+	text-align: center;
+
+	span {
+		font-size: 11pt;
+		line-height: 18pt;
+		color: rgba(0, 0, 0, 0.5);
+
+		a {
+			font-weight: 600;
+			text-decoration: none;
+			color: rgba(33, 164, 114, 0.8);
+		}
+	}
+}
+
+.star {
+	font-weight: 500;
+	font-size: 11pt;
+	color: #a6b0bf;
+}
+
+.ion-avatar {
+	width: 46pt;
+	height: 46pt;
+	margin-right: 0.8em;
+}
+
+.modal-transparency {
+	--height: 25rem !important;
+	--margin: 1rem !important;
+	display: flex;
+	justify-content: flex-end;
+	flex-direction: column;
+	--border-radius: 25px 25px 0px 0px;
+}
+
+.modal-container .modal-wrapper {
+	height: 50%;
+	width: 80%;
+	border-radius: 18pt;
+}
+
+.agree-terms {
+	display: flex;
+	flex-direction: row;
+	justify-content: flex-start;
+	font-size: 12px;
+	margin: 2em 0;
+
+	a {
+		color: rgba(33, 164, 114, 0.8);
+		text-decoration: none;
+		font-weight: 600;
+	}
+
+	span {
+		color: rgba(0, 0, 0, 0.6);
+	}
+
+
+	.ion-checkbox {
+		margin-right: 1em;
+	}
+}
+
+.bk-white {
+	background: #FFF;
+}
+
+.mx-1 {
+	margin-left: 1rem;
+	margin-right: 1rem;
+}
+
+.column-evenly {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-evenly;	
+}
+
+
+@media (max-device-height: 568px), handheld and (orientation: portrait) {
+    .modal-transparency {
+		--height: 20rem !important;
+	}
+}

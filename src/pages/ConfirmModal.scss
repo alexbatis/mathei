@@ -1,0 +1,40 @@
+.vertical-align {
+    height: 95%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 1rem;
+}
+
+ion-img {
+    margin: auto;
+    width: 8rem;
+    height: 8rem;
+}
+
+p {
+	font-weight: 600;
+	font-size: 12pt;
+	color: #223e5c;
+}
+
+span {
+	font-size: 11pt;
+	color: rgba(34, 62, 92, 0.8);
+}
+
+@media (max-device-height: 568px), handheld and (orientation: portrait) {
+    ion-img {
+        width: 6rem;
+        height: 6rem;
+    }
+    
+    p {
+        font-size: 10pt;
+    }
+    
+    span {
+        font-size: 9pt;
+        line-height: 10pt;
+    }
+}

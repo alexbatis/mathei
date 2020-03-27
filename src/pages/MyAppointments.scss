@@ -1,0 +1,51 @@
+ion-content {
+    --ion-background-color: #f9fafb;
+  }
+  
+  ion-title {
+    font-weight: 600;
+    text-align: end;
+  }
+  
+
+  
+  
+  ion-badge {
+    background: rgba(110, 213, 176, 0.6);
+    font-weight: 400;
+  }
+  
+  .filter-container {
+    display: flex;
+    justify-content: space-between;
+    margin-left: 1em;
+    margin-right: 1em;
+    width: auto;
+  }
+  
+  ion-select-option {
+      font-size: 12pt;
+      color: #a6b0bf;
+  
+  }
+  
+  .select-text {
+      color: #a6b0bf;
+      font-size: 12pt;
+  }
+  
+  .icons ion-button {
+      color: #a6b0bf;
+      padding: 0 !important;
+  }
+  
+  ion-select {
+    font-size: 12pt;
+    color: #a6b0bf;
+    align-items: center;
+  
+    .select-icon {
+      width:12pt;
+      height: 12pt;
+    }
+  }
