@@ -10,16 +10,18 @@ import {
   IonItem,
   IonLabel,
   IonInput,
-  IonButton
+  IonButton,
+  IonIcon
 } from '@ionic/react';
 import { Link } from 'react-router-dom';
+import { logoGoogle } from 'ionicons/icons';
 
 
 /* -------------------------------------------------------------------------- */
 /*                            COMPONENT DEFINITION                            */
 /* -------------------------------------------------------------------------- */
-interface RegisterFormProps { registerUser: Function }
-const RegisterForm: React.FC<RegisterFormProps> = ({ registerUser }) => {
+interface RegisterFormProps { registerUser: Function, googleLogin: Function }
+const RegisterForm: React.FC<RegisterFormProps> = ({ registerUser, googleLogin }) => {
   const [firstName, setFirstName] = useState(''),
     [lastName, setLastName] = useState(''),
     [email, setEmail] = useState(''),
@@ -60,7 +62,7 @@ const RegisterForm: React.FC<RegisterFormProps> = ({ registerUser }) => {
             onIonChange={e => setEmail(e.detail.value!)}
           ></IonInput>
         </IonItem>
-        <p className="input-help">Why do we need this?</p>
+        {/* <p className="input-help">Why do we need this?</p> */}
         <IonItem className="ion-no-padding ion-item">
           <IonLabel position="stacked" className="ion-label">Secure it with a password</IonLabel>
           <IonInput
@@ -88,9 +90,19 @@ const RegisterForm: React.FC<RegisterFormProps> = ({ registerUser }) => {
           expand="block">
           Sign Up
         </IonButton>
+        <IonButton
+          type="button"
+          color="light"
+          onClick={() => googleLogin()}
+          className="button-size center-button m-top"
+          expand="block">
+          <IonIcon icon={logoGoogle} className="m-right" />
+                 Sign In Via Google
+        </IonButton>
+        
         <div className="m-top">
           <span>
-            Don't have an account?
+            Have an account?
             <Link to="/login" style={{ marginLeft: '0.3rem' }}>Sign in</Link>
           </span>
         </div>
