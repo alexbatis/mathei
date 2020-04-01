@@ -1,0 +1,75 @@
+.card-title {
+	display: flex;
+	justify-content: flex-start;
+	text-align: left;
+	line-height: 2em;
+}
+
+ion-card-header {
+	display: flex;
+	justify-content: space-between;
+}
+
+ion-card-title {
+	font-size: 12pt;
+	color: #223e5c;
+}
+
+ion-card-subtitle {
+	color: #a6b0bf;
+	font-size: 10pt;
+	font-weight: 400;
+}
+ion-card-content {
+	font-size: 11pt;
+	font-weight: 400;
+	color: rgba(34, 62, 92, 0.8);
+}
+
+.you-pay {
+	display: flex;
+	flex-direction: column;
+  text-align: end;
+  align-self: center;
+}
+
+.you-pay span {
+	color: #f7685b;
+	font-size: 10px;
+}
+
+.you-pay p {
+	font-size: 11pt;
+	font-weight: 600;
+	margin: 0;
+}
+
+.title-container {
+  align-self: center;
+}
+
+
+
+.cta-buttons {
+	display: flex;
+	justify-content: space-evenly;
+
+	ion-button {
+		margin: 0.5em 0.5em 1.5em;
+		text-transform: capitalize;
+		font-weight: 500;
+		padding: 0 1em;
+	}
+
+	.btn-green {
+		background: #21a472;
+		border-radius: 6px;
+		color: #fff;
+	}
+
+	.btn-green-outline {
+		border: 1px solid #21a472;
+		border-radius: 6px;
+		color: #21a472;
+	}
+}

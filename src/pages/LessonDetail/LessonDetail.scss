@@ -1,0 +1,184 @@
+ion-content {
+	--ion-background-color: #f9fafb;
+}
+
+.ion-profile {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+
+	ion-avatar {
+		margin: 1em auto 2em;
+		height: 80px;
+		width: 80px;
+	}
+
+	h5 {
+		font-weight: 600;
+		font-size: 14pt;
+		color: #223e5c;
+		margin-bottom: 0;
+	}
+
+	p {
+		margin: 2em;
+		color: rgba(34, 62, 92, 0.8);
+		font-size: 11pt;
+	}
+}
+
+.review-title {
+	display: flex;
+	justify-content: space-between;
+	flex-direction: row;
+	margin: auto 1em;
+
+	span {
+		margin-top: 12pt;
+		margin-bottom: 10pt;
+		font-weight: 500;
+		font-size: 11pt;
+		color: #a6b0bf;
+	}
+
+	h5 {
+		font-weight: 600;
+		font-size: 14pt;
+		color: #223e5c;
+	}
+}
+
+ion-fab {
+	margin: 0 1rem 1rem 0;
+}
+
+.gallery-item {
+	border-radius: 8pt;
+}
+
+ion-segment-button {
+	font-size: 12pt;
+	text-transform: capitalize;
+}
+
+.images {
+	padding: 1rem;
+}
+
+@media (min-width: 0px) {
+	.images {
+		column-count: 2;
+	}
+}
+
+@media (min-width: 420px) {
+	.images {
+		column-count: 3;
+	}
+}
+
+@media (min-width: 720px) {
+	.images {
+		column-count: 4;
+	}
+}
+
+.info-list {
+	p {
+		font-weight: 400;
+		font-size: 14pt;
+	}
+
+	ion-list {
+		padding-top: 0 !important;
+
+		ion-item {
+			border: 0 !important;
+			--min-height: 36pt;
+		}
+
+		ion-label {
+			font-size: 1.3rem;
+			margin: 0 !important;
+		}
+
+	}
+}
+
+.iframe-test {
+	height: 30vh;
+	width: 100%;
+}
+
+.translation-phrase-label {
+	font-size: 1.1rem !important;
+	margin: 0 !important;
+}
+
+.translated-label {
+	display: flex;
+	flex-direction: column;
+	text-align: center;
+	align-self: center;
+}
+
+.translated-label span {
+	color: rgba(33, 164, 114, .8);
+	font-size: 1.3rem;
+}
+
+.translated-label p {
+	font-size: 1.3rem;
+	font-weight: 600;
+	margin: 0;
+	border-bottom: 2px dotted #223e5c;
+	text-decoration: none;
+	cursor: pointer;
+}
+
+
+ion-progress-bar {
+	padding: .3rem;
+	border-radius: 6pt;
+	margin: .2rem 0;
+}
+
+
+.review-container {
+	margin-bottom: 2rem;
+
+	p {
+		margin: 1rem;
+		font-size: 22pt;
+		color: rgba(0, 0, 0, 0.8);
+
+		small {
+			font-size: 11pt;
+			color: rgba(0, 0, 0, 0.5);
+			text-transform: uppercase;
+		}
+	}
+	ion-item {
+		--min-height: .2rem;
+
+		span {
+			color: rgba(0, 0, 0, 0.6);
+		}
+	}
+}
+
+.verified {
+	color: rgba(0, 0, 0, 0.5);
+}
+
+.icon-verified {
+	color: #5784BE;
+}
+
+.options-icon {
+	color: rgba(34, 62, 92, 0.8);
+}
+
+.offset-title {
+	padding-right: 2.75rem;
+}

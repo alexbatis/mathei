@@ -7,7 +7,7 @@ const initialState = {
       name: 'John Smith',
       rate: '5',
       text:
-        'Amazing job. Well done, fast and clean. Is the best handyman and gentle dude to really help me solve my problem.'
+        'Amazing job. Well done, fast and clean. Is the best matho and gentle dude to really help me solve my problem.'
     },
     {
       id: 2,
@@ -16,7 +16,7 @@ const initialState = {
       name: 'Matthew McDonald',
       rate: '4',
       text:
-        'Amazing job. Well done, fast and clean. Is the best handyman and gentle dude to really help me solve my problem.'
+        'Amazing job. Well done, fast and clean. Is the best matho and gentle dude to really help me solve my problem.'
     },
     {
       id: 3,
@@ -25,7 +25,7 @@ const initialState = {
       name: 'Sara Jenkins',
       rate: '4.5',
       text:
-        'Amazing job. Well done, fast and clean. Is the best handyman and gentle dude to really help me solve my problem.'
+        'Amazing job. Well done, fast and clean. Is the best matho and gentle dude to really help me solve my problem.'
     },
     {
       id: 4,
@@ -34,7 +34,7 @@ const initialState = {
       name: 'Lara Dunkirk',
       rate: '5',
       text:
-        'Amazing job. Well done, fast and clean. Is the best handyman and gentle dude to really help me solve my problem.'
+        'Amazing job. Well done, fast and clean. Is the best matho and gentle dude to really help me solve my problem.'
     }
   ],
   images: [
@@ -178,34 +178,34 @@ const initialState = {
   cardInf: [
     {
       id: 1,
-      name: 'Moving',
+      name: 'My Lessons',
       color: 'green'
     },
     {
       id: 2,
-      name: 'Housing',
-      color: 'red'
-    },
-    {
-      id: 3,
-      name: 'Electrical',
+      name: 'Create Lesson',
       color: 'blue'
     },
     {
-      id: 4,
-      name: 'Pet care',
-      color: 'yellow'
-    },
-    {
-      id: 5,
-      name: 'Barber',
-      color: 'light-green'
-    },
-    {
-      id: 6,
-      name: 'Security',
+      id: 3,
+      name: 'My Profile',
       color: 'black'
-    }
+    },
+    // {
+    //   id: 4,
+    //   name: 'Pet care',
+    //   color: 'yellow'
+    // },
+    // {
+    //   id: 5,
+    //   name: 'Barber',
+    //   color: 'light-green'
+    // },
+    // {
+    //   id: 6,
+    //   name: 'Security',
+    //   color: 'black'
+    // }
   ],
   showModal: false,
   showConfirmModal: false

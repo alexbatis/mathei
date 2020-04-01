@@ -1,0 +1,15 @@
+{
+    "test": {
+        "awscloudformation": {
+            "AuthRoleName": "amplify-mathei-ui-test-150127-authRole",
+            "UnauthRoleArn": "arn:aws:iam::327114879501:role/amplify-mathei-ui-test-150127-unauthRole",
+            "AuthRoleArn": "arn:aws:iam::327114879501:role/amplify-mathei-ui-test-150127-authRole",
+            "Region": "us-east-2",
+            "DeploymentBucketName": "amplify-mathei-ui-test-150127-deployment",
+            "UnauthRoleName": "amplify-mathei-ui-test-150127-unauthRole",
+            "StackName": "amplify-mathei-ui-test-150127",
+            "StackId": "arn:aws:cloudformation:us-east-2:327114879501:stack/amplify-mathei-ui-test-150127/94b83830-7453-11ea-a38b-02582149edd0",
+            "AmplifyAppId": "d1t72curs05vuo"
+        }
+    }
+}

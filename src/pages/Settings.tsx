@@ -1,9 +1,20 @@
 import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar, IonButtons, IonBackButton, IonGrid, IonRow, IonCol, IonList, IonButton, IonIcon, IonLabel, IonItem } from '@ionic/react';
 import React from 'react';
 import './Settings.scss';
+import { useDispatch } from 'react-redux';
+import { logoutAction } from '../redux/auth/auth.actions';
+import { useHistory } from 'react-router';
 
 
 const Settings: React.FC = () => {
+    const dispatch = useDispatch();
+    const history = useHistory();
+
+    const logout = () => {
+        dispatch(logoutAction())
+        history.replace('/login');
+    }
+
     return (
         <IonPage>
             <IonHeader no-border>
@@ -76,11 +87,12 @@ const Settings: React.FC = () => {
                     <IonRow>
                         <IonCol>
                             <IonButton
+                                onClick={logout}
                                 fill="outline"
                                 color="tertiary"
                                 class="button-size center-button"
                                 expand="block">
-                                    Delete account
+                                Log Out
                             </IonButton>
                         </IonCol>
                     </IonRow>

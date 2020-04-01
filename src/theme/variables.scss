@@ -162,6 +162,25 @@ ion-searchbar input {
 	--border-radius: 25px 25px 0px 0px;
 }
 
+.modal-transparency-md {
+	--height: 18rem !important;
+	--margin: 1rem !important;
+	display: flex;
+	justify-content: flex-end;
+	flex-direction: column;
+	--border-radius: 25px 25px 0px 0px;
+}
+
+
+.modal-transparency-sm {
+	--height: 10rem !important;
+	--margin: 1rem !important;
+	display: flex;
+	justify-content: flex-end;
+	flex-direction: column;
+	--border-radius: 25px 25px 0px 0px;
+}
+
 .modal-container .modal-wrapper {
 	height: 50%;
 	width: 80%;
@@ -211,4 +230,9 @@ ion-searchbar input {
     .modal-transparency {
 		--height: 20rem !important;
 	}
+
+	.modal-transparency-sm {
+		--height: 10rem !important;
+	}
 }
+

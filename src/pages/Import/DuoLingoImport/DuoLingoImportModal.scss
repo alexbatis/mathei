@@ -1,0 +1,10 @@
+ion-label {
+  font-size: 16pt !important;
+  font-weight: 500;
+  color: #223E5C;
+
+  & span {
+      font-size: 10pt;
+      color: rgba(0, 0, 0, 0.6);
+  }
+}

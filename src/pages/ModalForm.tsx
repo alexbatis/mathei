@@ -10,7 +10,7 @@ import {
     IonDatetime,
     IonCheckbox
 } from '@ionic/react';
-import './Login.scss';
+// import './Login.scss';
 import React from 'react';
 import { useDispatch } from 'react-redux';
 
