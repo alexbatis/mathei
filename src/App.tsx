@@ -48,6 +48,7 @@ import Import from './pages/Import/Import';
 /* -------------------------------------------------------------------------- */
 /*                            COMPONENT DEFINITION                            */
 /* -------------------------------------------------------------------------- */
+console.log('TEST ENVIRONMENT')
 const App: React.FC = () => (
   <ApolloProvider client={apolloClient}>
     <IonApp>
