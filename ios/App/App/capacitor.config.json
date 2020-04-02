@@ -1,6 +1,6 @@
 {
-  "appId": "batis.alex.matho",
-  "appName": "matho",
+  "appId": "io.mathei",
+  "appName": "mathei",
   "bundledWebRuntime": false,
   "npmClient": "npm",
   "webDir": "build",

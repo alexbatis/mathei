@@ -6,11 +6,11 @@
     padding: 1rem;
 }
 
-ion-img {
-    margin: auto;
-    width: 8rem;
-    height: 8rem;
-}
+// ion-img {
+//     margin: auto;
+//     width: 8rem;
+//     height: 8rem;
+// }
 
 p {
 	font-weight: 600;
@@ -24,10 +24,10 @@ span {
 }
 
 @media (max-device-height: 568px), handheld and (orientation: portrait) {
-    ion-img {
-        width: 6rem;
-        height: 6rem;
-    }
+    // ion-img {
+    //     width: 6rem;
+    //     height: 6rem;
+    // }
     
     p {
         font-size: 10pt;

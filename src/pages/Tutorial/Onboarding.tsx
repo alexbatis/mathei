@@ -7,7 +7,7 @@ import {
     IonImg
 } from '@ionic/react';
 import './Onboarding.scss';
-import logo from '../../assets/logo.png';
+import logo from '../../assets/brand/logo-green-transparent.png';
 
 import React from 'react';
 import { Link, useHistory } from 'react-router-dom';

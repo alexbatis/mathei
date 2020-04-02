@@ -22,7 +22,7 @@ import { loginAction } from '../../../redux/auth/auth.actions';
 import { AuthService } from '../../../services/auth.service';
 import { User } from '../../../models/User';
 import LoginForm from './LoginForm';
-import logo from '../../../assets/logo.png';
+import logo from '../../../assets/brand/logo-text.png';
 
 
 /* -------------------------------------------------------------------------- */
@@ -64,7 +64,7 @@ const Login: React.FC = () => {
     const logoSection = () =>
         <IonRow>
             <IonCol>
-                <IonImg src={logo} className="ion-img" />
+                <IonImg src={logo} className="greeting-logo" />
             </IonCol>
         </IonRow>
 

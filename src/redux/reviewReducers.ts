@@ -7,7 +7,7 @@ const initialState = {
       name: 'John Smith',
       rate: '5',
       text:
-        'Amazing job. Well done, fast and clean. Is the best matho and gentle dude to really help me solve my problem.'
+        'Amazing job. Well done, fast and clean. Is the best mathei and gentle dude to really help me solve my problem.'
     },
     {
       id: 2,
@@ -16,7 +16,7 @@ const initialState = {
       name: 'Matthew McDonald',
       rate: '4',
       text:
-        'Amazing job. Well done, fast and clean. Is the best matho and gentle dude to really help me solve my problem.'
+        'Amazing job. Well done, fast and clean. Is the best mathei and gentle dude to really help me solve my problem.'
     },
     {
       id: 3,
@@ -25,7 +25,7 @@ const initialState = {
       name: 'Sara Jenkins',
       rate: '4.5',
       text:
-        'Amazing job. Well done, fast and clean. Is the best matho and gentle dude to really help me solve my problem.'
+        'Amazing job. Well done, fast and clean. Is the best mathei and gentle dude to really help me solve my problem.'
     },
     {
       id: 4,
@@ -34,7 +34,7 @@ const initialState = {
       name: 'Lara Dunkirk',
       rate: '5',
       text:
-        'Amazing job. Well done, fast and clean. Is the best matho and gentle dude to really help me solve my problem.'
+        'Amazing job. Well done, fast and clean. Is the best mathei and gentle dude to really help me solve my problem.'
     }
   ],
   images: [
