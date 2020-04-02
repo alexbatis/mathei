@@ -132,8 +132,7 @@ const DuoLingoImportModal: React.FC = (props: any) => {
         <div>
           <IonImg src={duoLingoSadLogo} alt="error" />
           <p>Error importing your DuoLingo data</p>
-          <span>import ENDPOINTS from '../../../constants/endpoints';
-
+          <span>
             {error?.message}
           </span>
         </div>
