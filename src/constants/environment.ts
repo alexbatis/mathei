@@ -1,19 +1,25 @@
+/* eslint-disable no-restricted-globals */
 const ENVIRONMENT = {
   LOCAL: {
+    ENV_NAME: 'local',
     API_URL: 'http://localhost:9000',
     WS_API_URL: 'ws://localhost:9000/graphql'
   },
   TEST: {
-    API_URL: 'http://mathei-api.us-east-2.elasticbeanstalk.com',
-    WS_API_URL: 'ws://mathei-api.us-east-2.elasticbeanstalk.com//graphql'
+    ENV_NAME: 'test',
+    API_URL: 'https://api.test.mathei.io',
+    WS_API_URL: 'ws://api.test.mathei.io/graphql'
   },
   PROD: {
-    API_URL: 'http://localhost:9000',
-    WS_API_URL: 'ws://localhost:9000/graphql'
+    ENV_NAME: 'prod',
+    API_URL: 'https://api.mathei.io',
+    WS_API_URL: 'ws://api.mathei.io/graphql'
   }
 }
 
 
-// eslint-disable-next-line no-restricted-globals
-const env = (location.hostname) === 'localhost' ? ENVIRONMENT.LOCAL : ENVIRONMENT.TEST
+let env = ENVIRONMENT.LOCAL;
+if (location.hostname === 'test.mathei.io') env = ENVIRONMENT.TEST
+if (location.hostname === 'mathei.io') env = ENVIRONMENT.PROD
+
 export default env
