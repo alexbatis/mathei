@@ -43,12 +43,13 @@ import { userIsAuthenticated } from './services/auth.service';
 /* --------------------------------- GRAPHQL -------------------------------- */
 import apolloClient from './graphql/apollo-client';
 import Import from './pages/Import/Import';
+import env from './constants/environment';
 
 
 /* -------------------------------------------------------------------------- */
 /*                            COMPONENT DEFINITION                            */
 /* -------------------------------------------------------------------------- */
-console.log('TEST ENVIRONMENT')
+console.log(`Running in environment ${env.ENV_NAME}`)
 const App: React.FC = () => (
   <ApolloProvider client={apolloClient}>
     <IonApp>
