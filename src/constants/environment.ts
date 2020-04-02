@@ -4,8 +4,8 @@ const ENVIRONMENT = {
     WS_API_URL: 'ws://localhost:9000/graphql'
   },
   TEST: {
-    API_URL: 'http://mathei-api.us-east-2.elasticbeanstalk.com',
-    WS_API_URL: 'ws://mathei-api.us-east-2.elasticbeanstalk.com//graphql'
+    API_URL: 'https://api.test.mathei.io',
+    WS_API_URL: 'ws://api.test.mathei.io/graphql'
   },
   PROD: {
     API_URL: 'http://localhost:9000',
