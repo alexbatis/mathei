@@ -20,6 +20,7 @@ import success from '../../../assets/success-logo.png';
 import logo from '../../../assets/logo.png';
 import { AuthService } from '../../../services/auth.service';
 import apolloClient from '../../../graphql/apollo-client';
+import ENDPOINTS from '../../../constants/endpoints';
 const duoLingoSadLogo = "https://i.imgur.com/1h1qMBb.png"
 
 const DuoLingoImportModal: React.FC = (props: any) => {
@@ -41,7 +42,7 @@ const DuoLingoImportModal: React.FC = (props: any) => {
     setLoading(true)
     try {
       const token = await AuthService.getAccessToken()
-      const _response = await fetch('http://localhost:9000/api/v1/import/duolingo', {
+      const _response = await fetch(ENDPOINTS.import.duolingo, {
         method: 'POST',
         headers: {
           'content-type': 'application/json',
@@ -131,7 +132,8 @@ const DuoLingoImportModal: React.FC = (props: any) => {
         <div>
           <IonImg src={duoLingoSadLogo} alt="error" />
           <p>Error importing your DuoLingo data</p>
-          <span>
+          <span>import ENDPOINTS from '../../../constants/endpoints';
+
             {error?.message}
           </span>
         </div>
