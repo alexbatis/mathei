@@ -20,6 +20,7 @@ const ENVIRONMENT = {
 
 let env = ENVIRONMENT.LOCAL;
 if (location.hostname === 'test.mathei.io' || location.hostname === 'www.test.mathei.io') env = ENVIRONMENT.TEST
-if (location.hostname === 'mathei.io' || location.hostname === 'www.mathei.io') env = ENVIRONMENT.PROD
+// if (location.hostname === 'mathei.io' || location.hostname === 'www.mathei.io')
+env = ENVIRONMENT.PROD
 
 export default env

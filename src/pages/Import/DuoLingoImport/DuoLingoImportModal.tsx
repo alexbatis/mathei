@@ -17,7 +17,7 @@ import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import DuoLingoConfirmModal from './DuoLingoImportConfirm';
 import success from '../../../assets/success-logo.png';
-import logo from '../../../assets/logo.png';
+import logo from '../../../assets/brand/logo-green-transparent.png';
 import { AuthService } from '../../../services/auth.service';
 import apolloClient from '../../../graphql/apollo-client';
 import ENDPOINTS from '../../../constants/endpoints';
