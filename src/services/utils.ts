@@ -1,4 +1,5 @@
 /* -------------------------------------------------------------------------- */
+import { deserialize } from 'class-transformer';
 /*                              UTILITY FUNCTIONS                             */
 /* -------------------------------------------------------------------------- */
 
@@ -44,4 +45,8 @@ export const getGreeting = () => {
   if (hours > 6 && hours < 20) greeting = "Hello"
   else if (hours > 20) greeting = "Good Evening"
   return greeting
+}
+
+export function toClass<T>(constructor: any, json: object): T {
+  return deserialize(constructor, JSON.stringify(json))
 }

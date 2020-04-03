@@ -13,8 +13,8 @@ import { AuthService } from "../services/auth.service";
 /* -------------------------------- HTTP LINK ------------------------------- */
 const httpLink = new HttpLink({ uri: ENDPOINTS.graphql })
 
-const authMiddleware = setContext(async (req, { headers }) => {
-  const token = await AuthService.getAccessToken()
+const authMiddleware = setContext((req, { headers }) => {
+  const token = AuthService.getAccessToken()
 
   return {
     headers: {

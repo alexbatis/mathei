@@ -54,7 +54,6 @@ const Home: React.FC = () => {
 		</IonHeader >
 
 
-
 	/* ---------------------------- RENDER COMPONENT ---------------------------- */
 	return (
 		<IonPage>
