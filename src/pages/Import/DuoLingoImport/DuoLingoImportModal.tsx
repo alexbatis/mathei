@@ -1,71 +1,31 @@
-import {
-  IonContent,
-  IonGrid,
-  IonCol,
-  IonRow,
-  IonItem,
-  IonLabel,
-  IonButton,
-  IonTextarea,
-  IonDatetime,
-  IonCheckbox,
-  IonModal,
-  IonImg,
-  IonInput
-} from '@ionic/react';
+/* -------------------------------------------------------------------------- */
+/*                                   IMPORTS                                  */
+/* -------------------------------------------------------------------------- */
+/* ------------------------------- THIRD PARTY ------------------------------ */
+import { IonContent, IonGrid, IonCol, IonRow, IonItem, IonLabel, IonButton, IonInput } from '@ionic/react';
 import React, { useState } from 'react';
-import { useDispatch } from 'react-redux';
-import DuoLingoConfirmModal from './DuoLingoImportConfirm';
+/* --------------------------------- CUSTOM --------------------------------- */
 import success from '../../../assets/success-logo.png';
-import logo from '../../../assets/brand/logo-green-transparent.png';
-import { AuthService } from '../../../services/auth.service';
-import apolloClient from '../../../graphql/apollo-client';
-import ENDPOINTS from '../../../constants/endpoints';
+import { loadingIndicator } from '../../../services/component-utils';
+import { usePromise } from '../../../hooks/fetch.hook';
+import { DuoLingoImportResult, ImportService } from '../../../services/import.service';
 const duoLingoSadLogo = "https://i.imgur.com/1h1qMBb.png"
 
-const DuoLingoImportModal: React.FC = (props: any) => {
-  const [showModal, setShowModal] = useState(false);
-  const [loading, setLoading] = useState(false)
-  const [error, setError] = useState<Error | null>(null)
-  const [complete, setComplete] = useState<any | null>(false);
+
+/* -------------------------------------------------------------------------- */
+/*                            COMPONENT DEFINITION                            */
+/* -------------------------------------------------------------------------- */
+interface DuoLingoImportModalProps { dismissModal: Function }
+const DuoLingoImportModal: React.FC<DuoLingoImportModalProps> = ({ dismissModal }) => {
+  /* ---------------------------------- HOOKS --------------------------------- */
+  let { result, error, loading, resolve, reset } = usePromise<DuoLingoImportResult>();
   const [duoEmail, setDuoEmail] = useState('');
   const [duoPassword, setDuoPassword] = useState('');
 
-  const dispatch = useDispatch();
+  /* --------------------------------- METHODS -------------------------------- */
+  const onSubmit = async () => resolve(ImportService.duolingoImport(duoEmail, duoPassword))
 
-  function confirmModal() {
-    dispatch({ type: 'ShowModalFalse' });
-    dispatch({ type: 'ShowConfirmModalTrue' });
-  }
-
-  const onSubmit = async () => {
-    setLoading(true)
-    try {
-      const token = await AuthService.getAccessToken()
-      const _response = await fetch(ENDPOINTS.import.duolingo, {
-        method: 'POST',
-        headers: {
-          'content-type': 'application/json',
-          'authorization': token ? `Bearer ${token}` : ''
-        },
-        body: JSON.stringify({ duoEmail, duoPassword })
-      })
-      const response = await _response.json()
-      console.log(response)
-      if (!_response.ok)
-        throw response
-
-      apolloClient.resetStore()
-      setComplete(response)
-    } catch (err) {
-      const error = (err && err.message && err.error && typeof err.error === 'string') ? new Error(`${err.message} - ${err.error}`) : err;
-      setError(error)
-    } finally {
-      setLoading(false)
-    }
-  }
-
-
+  /* ----------------------------- RENDER METHODS ----------------------------- */
   const formContent = () =>
     <IonGrid className="column-evenly">
       <IonRow>
@@ -84,19 +44,16 @@ const DuoLingoImportModal: React.FC = (props: any) => {
               onIonChange={e => setDuoPassword(e.detail.value!)}
               type="password" />
           </IonItem>
-          {/* <div className="agree-terms">
-            <IonCheckbox slot="start" checked={true} />
-            <span style={{ marginLeft: '0.3rem' }}>I want to pay once the repair is finished</span>
-          </div> */}
         </IonCol>
       </IonRow>
       <IonRow style={{ marginTop: "2rem" }}>
         <IonCol>
-          <IonButton onClick={onSubmit}
+          <IonButton
+            onClick={onSubmit}
             className="button-size center-button"
             expand="block">
-            Import your DuoLingo vocabulary
-                    </IonButton>
+            Import
+          </IonButton>
         </IonCol>
       </IonRow>
     </IonGrid>
@@ -105,46 +62,49 @@ const DuoLingoImportModal: React.FC = (props: any) => {
   const completed = () =>
     <div className="ion-text-center vertical-align">
       <div>
-        <IonImg src={success} alt="confirm" />
+        <img src={success} alt="confirm" />
         <p>Import from DuoLingo complete!</p>
         <span>
-          {`Imported ${complete?.translationsCreated} words/phrases from ${complete?.lessonsCreated} lessons`}
+          {`Imported ${result?.translationsCreated} words/phrases from ${result?.lessonsCreated} lessons`}
         </span>
       </div>
     </div>
 
-  const loadingSection = () =>
-    <IonContent className="modal-cont">
-      <div className="ion-text-center vertical-align">
-        <div>
-          <IonImg src={logo} alt="confirm" />
-          <p>Importing your lessons from DuoLingo...</p>
-          <span>
-            This may take some time, please hang tight
-      </span>
-        </div>
-      </div>
-    </IonContent>
 
   const errorSection = () =>
     <IonContent className="modal-cont">
       <div className="ion-text-center vertical-align">
         <div>
-          <IonImg src={duoLingoSadLogo} alt="error" />
+          <img src={duoLingoSadLogo} alt="error" style={{ maxHeight: "250px" }} />
           <p>Error importing your DuoLingo data</p>
-          <span>
-            {error?.message}
-          </span>
+          <span>{error?.message}</span>
+          <IonRow style={{ marginTop: "1rem" }}>
+            <IonCol>
+              <IonButton
+                onClick={reset}
+                className="button-size center-button"
+                expand="block">
+                Try Again
+              </IonButton>
+              <IonButton
+                onClick={() => { dismissModal() }}
+                style={{ marginTop: "1rem" }}
+                className="button-size center-button"
+                expand="block">
+                Close
+              </IonButton>
+            </IonCol>
+          </IonRow>
         </div>
       </div>
-    </IonContent>
+    </IonContent >
 
   if (error) return errorSection()
-  if (loading) return loadingSection()
 
   return (
     <IonContent className="modal-cont">
-      {complete ? completed() : formContent()}
+      {loadingIndicator(loading, 'Importing from Duolingo...This may take some time, please hang tight :-)')}
+      {result ? completed() : formContent()}
     </IonContent >
   );
 }

@@ -1,34 +1,25 @@
-
-import {
-  IonContent,
-  IonGrid,
-  IonCol,
-  IonRow,
-  IonModal,
-  IonHeader,
-  IonToolbar,
-  IonButtons,
-  IonBackButton,
-  IonTitle
-} from '@ionic/react';
-import './Import.scss';
+/* -------------------------------------------------------------------------- */
+/*                                   IMPORTS                                  */
+/* -------------------------------------------------------------------------- */
+/* ------------------------------- THIRD PARTY ------------------------------ */
+import { IonContent, IonGrid, IonCol, IonRow, IonModal, IonHeader, IonToolbar, IonButtons, IonBackButton, IonTitle, IonPage } from '@ionic/react';
 import React, { useState } from 'react';
-import { useHistory } from 'react-router-dom';
-import { IonPage } from '@ionic/react';
+/* --------------------------------- CUSTOM --------------------------------- */
+import './Import.scss';
 import CardInfo from '../../components/card-info';
-// import ModalForm from '../ModalForm';
-// import ConfirmModal from '../ConfirmModal';
 import DuoLingoImportModal from './DuoLingoImport/DuoLingoImportModal';
 const duolingoIcon = "https://is2-ssl.mzstatic.com/image/thumb/Purple123/v4/cd/36/33/cd3633d8-27a9-5212-76c6-15a4b5d1bfee/AppIcon-0-0-1x_U007emarketing-0-0-0-7-0-0-sRGB-0-0-0-GLES2_U002c0-512MB-85-220-0-0.png/246x0w.png";
 
+
+/* -------------------------------------------------------------------------- */
+/*                            COMPONENT DEFINITION                            */
+/* -------------------------------------------------------------------------- */
 const Import: React.FC = () => {
+  /* ---------------------------------- HOOKS --------------------------------- */
   const [showModal, setShowModal] = useState(false);
-  const history = useHistory();
 
-  function goToRegister() {
-    history.replace('/register');
-  }
 
+  /* ----------------------------- RENDER METHODS ----------------------------- */
   const pageHeader = () =>
     <IonHeader no-border>
       <IonToolbar>
@@ -47,10 +38,9 @@ const Import: React.FC = () => {
         <IonModal
           isOpen={showModal}
           onDidDismiss={() => setShowModal(false)}
-          cssClass="modal-transparency-md">
-          <DuoLingoImportModal />
+          cssClass="modal-container">
+          <DuoLingoImportModal dismissModal={() => { setShowModal(false) }} />
         </IonModal>
-
 
         <IonGrid className="column-evenly ion-grid-background-image">
           <IonRow>
