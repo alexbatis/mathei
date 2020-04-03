@@ -22,18 +22,18 @@ import { Lesson } from '../../models/Lesson';
 interface LessonCardProps { lesson: Lesson }
 const LessonCard: React.FC<LessonCardProps> = ({ lesson }) => {
     return (
-        <IonCard className="bk-white">
+        <IonCard className="bk-white m-0">
             <IonCardHeader>
                 <div className="card-title">
                     <div>
                         <IonCardTitle>{lesson.name}</IonCardTitle>
-                        <IonCardSubtitle>
+                        <IonCardSubtitle style={{ justifyContent: 'left' }}>
                             {lesson.createdAt?.toLocaleDateString()}
                         </IonCardSubtitle>
                     </div>
                 </div>
-                <div>
-                    <IonBadge className="ion-badge" color="primary">{lesson.translations.length} phrases</IonBadge>
+                <div className="badge-container">
+                    <IonBadge className="ion-badge badge-lg" color="primary">{lesson.translations.length} phrases</IonBadge>
                 </div>
             </IonCardHeader>
 

@@ -4,11 +4,21 @@ import { Plugins } from '@capacitor/core';
 import { store } from "../redux/store";
 import { AppState } from '../redux/root.reducer';
 import { User } from "../models/User";
-import { plainToClass } from 'class-transformer';
+import { plainToClass, deserialize } from 'class-transformer';
 import apolloClient from "../graphql/apollo-client";
 import { connectedRouterRedirect } from "redux-auth-wrapper/history4/redirect";
+import axios from 'axios';
+import { toClass } from "./utils";
 
-export const getAccessToken = async () => {
+
+axios.interceptors.response.use(response => response, error => {
+  if (error.response.status === 401)
+    console.log('TODO: log user out');
+
+  return Promise.reject((error?.response?.data?.message) ? new Error(error.response.data.message) : error)
+});
+
+export const getAccessToken = () => {
   const state: AppState = store.getState()
   return state.auth.user?.refreshToken || '';
 }
@@ -17,33 +27,15 @@ export const getAccessToken = async () => {
 interface RegisterOpts { firstName: string, lastName, email: string, password: string }
 export const register = async (registerOpts: RegisterOpts): Promise<User> => {
   apolloClient.resetStore()
-  const registerResponse = await fetch(ENDPOINTS.auth.register, {
-    method: 'POST',
-    headers: { 'content-type': 'application/json' },
-    body: JSON.stringify(registerOpts)
-  });
-  console.log(registerResponse)
-  if (!registerResponse.ok) {
-    throw new Error('Unable to register user')
-  }
-  const resp: object = await registerResponse.json()
-  return plainToClass(User, resp)
+  const registerResponse = await axios.post(ENDPOINTS.auth.register, registerOpts)
+  return toClass<User>(User, registerResponse.data)
 }
 
 
 export const login = async (email: string, password: string): Promise<User> => {
   apolloClient.resetStore()
-  const loginResponse = await fetch(ENDPOINTS.auth.login, {
-    method: 'POST',
-    headers: { 'content-type': 'application/json' },
-    body: JSON.stringify({ email, password })
-  });
-  console.log(loginResponse)
-  if (!loginResponse.ok) {
-    throw new Error('Unable to login')
-  }
-  const resp: object = await loginResponse.json()
-  return plainToClass(User, resp)
+  const loginResponse = await axios.post(ENDPOINTS.auth.login, { email, password })
+  return toClass<User>(User, loginResponse.data)
 }
 
 export const loginWithGoogle = async (): Promise<User> => {
@@ -58,7 +50,6 @@ export const loginWithGoogle = async (): Promise<User> => {
   };
   const loginResponse = await fetch(ENDPOINTS.auth.googleLogin, options)
   const resp: object = await loginResponse.json()
-  console.log(resp)
   return plainToClass(User, resp)
 }
 

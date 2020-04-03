@@ -44,7 +44,7 @@ const Translations: React.FC = () => {
     /* -------------------------------- CONSTANTS ------------------------------- */
 
 
-    console.log(_searchFunction, _searchDirection)
+    // console.log(_searchFunction, _searchDirection)
     const search = (e) => setSearchText(e.target.value)
 
 
@@ -88,21 +88,16 @@ const Translations: React.FC = () => {
     const translationList = () => translations
         .sort(customSort(_searchFunction, _searchDirection))
         .map(translation => <TranslationExpandableCard key={translation.id} translation={translation} />)
-        // .map(translation => translationItem(translation))
+    // .map(translation => translationItem(translation))
 
 
-    const translationsContent = () =>
-        <IonGrid>
-            <IonRow>
-                <IonCol>
-                    {searchAndFilters()}
-                    {(!loading && !error && (!translations || !translations.length)) ?
-                        <NoLessons message='No translations found' /> :
-                        <PhraseList translations={translations} />
-                    }
-                </IonCol>
-            </IonRow>
-        </IonGrid>
+    const translationsContent = () => <>
+        {searchAndFilters()}
+        {(!loading && !error && (!translations || !translations.length)) ?
+            <NoLessons message='No translations found' /> :
+            <PhraseList translations={translations} />
+        }</>
+
 
 
 

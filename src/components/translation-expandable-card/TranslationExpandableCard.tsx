@@ -1,68 +1,57 @@
+/* -------------------------------------------------------------------------- */
+/*                                   IMPORTS                                  */
+/* -------------------------------------------------------------------------- */
+/* ------------------------------- THIRD PARTY ------------------------------ */
+import React, { useState } from 'react';
 import {
-    IonButton,
     IonCard,
     IonCardHeader,
-    IonAvatar,
     IonCardTitle,
-    IonCardSubtitle,
-    IonCardContent,
-    IonButtons,
     IonIcon
 } from '@ionic/react';
-import './TranslationExpandableCard.scss';
-import React, { useState } from 'react';
-import { Translation } from '../../models/Translation';
-import { speakWord } from '../../services/utils';
 import { arrowDropdown } from 'ionicons/icons';
 import { Link } from 'react-router-dom';
+/* --------------------------------- CUSTOM --------------------------------- */
+import './TranslationExpandableCard.scss';
+import { Translation } from '../../models/Translation';
+import { speakWord } from '../../services/utils';
 
 
-interface TranslationExpandableCardProps { translation: Translation }
-const TranslationExpandableCard: React.FC<TranslationExpandableCardProps> = ({ translation }) => {
-    console.log(translation)
-    const cardStyle = {
+const
+    cardStyle = {
         padding: "0",
         margin: "0 !important",
-        marginLeft: "unset",
-        marginRight: "unset",
-        WebkitMarginStart: "16px",
-        marginInlineStart: "16px",
-        WebkitMarginEnd: "16px",
-        marginInlineEnd: "16px",
         boxShadow: "none !important",
+        width: "100%"
+    },
+    cardHeaderStyle = {
+        padding: "1.5rem 0px 1rem 1.5px"
     }
-    // const subTitleStyle = {
-    //     ion-card-subtitle 
-    // }
+
+/* -------------------------------------------------------------------------- */
+/*                                  COMPONENT                                 */
+/* -------------------------------------------------------------------------- */
+interface TranslationExpandableCardProps { translation: Translation }
+const TranslationExpandableCard: React.FC<TranslationExpandableCardProps> = ({ translation }) => {
     const [isOpen, setIsOpen] = useState(false);
 
+    /* ---------------------------- RENDER COMPONENT ---------------------------- */
     return (
-        <IonCard style={cardStyle}>
+        <IonCard className="no-margin no-shadow" style={cardStyle}>
             <div onClick={() => setIsOpen(!isOpen)}>
-                <IonCardHeader>
+                <IonCardHeader style={cardHeaderStyle}>
                     <div className="card-title">
-                        {/* <IonAvatar>
-                            <img src={value.avatar} alt="" />
-                        </IonAvatar> */}
                         <div className="title-container">
                             <IonCardTitle className="translation-phrase-label">{translation.phrase}</IonCardTitle>
-                            {/* <IonCardSubtitle> */}
-                                <Link to={`/lesson/${translation.lesson?.id}`}>
-                                    {translation.lesson?.name}
-                                </Link>
-                            {/* </IonCardSubtitle> */}
+                            <Link to={`/lesson/${translation.lesson?.id}`}>
+                                {translation.lesson?.name}
+                            </Link>
                         </div>
                     </div>
                     <div className="you-pay">
-                        <IonIcon icon={arrowDropdown} size="large" />
-                        {/* <span>You pay</span> */}
-                        {/* <p>${translation.translated}</p> */}
+                        <IonIcon icon={arrowDropdown} size="large" mode="md" />
                     </div>
                 </IonCardHeader>
-
-                {/* <IonCardContent>
-                    {value.text}
-                </IonCardContent> */}
             </div>
 
             {isOpen &&

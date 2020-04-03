@@ -29,10 +29,6 @@ const LessonDetail: React.FC = () => {
   let { lessonId } = useParams()
   const history = useHistory()
   const dispatch = useDispatch();
-  // const [showPopover, setShowPopover] = useState(false);
-  // const [value] = useState(props.location.state);
-  // const showModal = useSelector((state: any) => state.reviewReducers.showModal);
-  // const showConfirmModal = useSelector((state: any) => state.reviewReducers.showConfirmModal);
   if (!lessonId) throw new Error("No Lesson ID")
   const [showModal, setShowModal] = useState(false);
   const [valueType, setValueType] = useState('words');
@@ -40,10 +36,6 @@ const LessonDetail: React.FC = () => {
   const { deleteLesson } = useMutateLesson(lessonId)
 
   if (!lesson) return <></>
-
-  // console.log(lesson.translations.filter(t => !t.tags?.includes('exercise')).length)
-  // const onCompleted = () => history.replace('/lessons')
-
 
   /* ----------------------------- RENDER METHODS ----------------------------- */
   const showInfoSegment = (lesson: Lesson) => {
@@ -67,50 +59,33 @@ const LessonDetail: React.FC = () => {
   }
 
   const pageHeader = () =>
-    <IonHeader>
-      <IonToolbar>
+    <IonHeader mode="md">
+      <IonToolbar mode="md">
         <IonButtons slot="start">
-          <IonBackButton defaultHref="/" />
+          <IonBackButton defaultHref="/" mode="md" />
         </IonButtons>
         <IonTitle className="offset-title">{lesson?.name}</IonTitle>
         <IonButtons slot="end">
-          <IonIcon onClick={() => { setShowModal(!showModal) }} icon={more} size="large" className="options-icon" />
+          <IonIcon onClick={() => { setShowModal(!showModal) }} icon={more} size="large" className="options-icon" mode="md" />
         </IonButtons>
       </IonToolbar>
     </IonHeader>
 
-
-  const fab = () =>
-    <IonFab vertical="bottom" horizontal="end" slot="fixed">
-      <IonFabButton onClick={() => dispatch({ type: 'ShowModalTrue' })}>
-        <IonIcon icon={calendar} />
-      </IonFabButton>
-    </IonFab>
-
-
-  const lessonHeader = () => lesson ?
-    <IonRow>
-      <IonCol className="ion-profile ion-text-center">
-        <ResourcePlayer resources={lesson.resources || []} />
-
-      </IonCol>
-    </IonRow> :
-    <IonRow></IonRow>
-
   const tabSet = () =>
-    <IonRow>
-      <IonSegment value={valueType} onIonChange={(e: any) => setValueType(e.detail.value)}>
-        <IonSegmentButton value="words">
-          <IonLabel>Words</IonLabel>
-        </IonSegmentButton>
-        <IonSegmentButton value="exercises">
-          <IonLabel>Exercises</IonLabel>
-        </IonSegmentButton>
-        <IonSegmentButton value="review">
-          <IonLabel>Review</IonLabel>
-        </IonSegmentButton>
-      </IonSegment>
-    </IonRow>
+      <IonRow>
+        <IonSegment value={valueType} onIonChange={(e: any) => setValueType(e.detail.value)} mode="md">
+          <IonSegmentButton value="words" mode="md">
+            <IonLabel>Words</IonLabel>
+          </IonSegmentButton>
+          <IonSegmentButton value="exercises" mode="md">
+            <IonLabel>Exercises</IonLabel>
+          </IonSegmentButton>
+          <IonSegmentButton value="review" mode="md">
+            <IonLabel>Review</IonLabel>
+          </IonSegmentButton>
+        </IonSegment>
+      </IonRow>
+    
 
   const deleteLessonModal = () =>
     <IonModal isOpen={showModal} cssClass="modal-transparency-sm">
@@ -124,12 +99,9 @@ const LessonDetail: React.FC = () => {
       {pageHeader()}
       <IonContent>
         {deleteLessonModal()}
-        {fab()}
-        <IonGrid>
-          {lessonHeader()}
-          {tabSet()}
-          {showInfoSegment(lesson)}
-        </IonGrid>
+        <ResourcePlayer resources={lesson.resources || []} />
+        {tabSet()}
+        {showInfoSegment(lesson)}
       </IonContent>
     </IonPage >
   );

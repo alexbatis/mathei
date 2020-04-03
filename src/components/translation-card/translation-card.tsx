@@ -25,7 +25,7 @@ const TranslationCard: React.FC<TranslationCardProps> = ({ translation }) => {
 
     /* ---------------------------- RENDER COMPONENT ---------------------------- */
     return (
-        <IonCard className="bk-white">
+        <IonCard className="no-margin" style={{ margin: '0 !important' }}>
             <IonCardHeader>
                 <div className="card-title">
                     <div>
