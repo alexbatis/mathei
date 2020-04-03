@@ -1,12 +1,7 @@
 import {
-    IonButton,
     IonCard,
     IonCardHeader,
-    IonAvatar,
     IonCardTitle,
-    IonCardSubtitle,
-    IonCardContent,
-    IonButtons,
     IonIcon
 } from '@ionic/react';
 import './TranslationExpandableCard.scss';
@@ -19,21 +14,12 @@ import { Link } from 'react-router-dom';
 
 interface TranslationExpandableCardProps { translation: Translation }
 const TranslationExpandableCard: React.FC<TranslationExpandableCardProps> = ({ translation }) => {
-    console.log(translation)
     const cardStyle = {
         padding: "0",
         margin: "0 !important",
-        // marginLeft: "unset",
-        // marginRight: "unset",
-        // WebkitMarginStart: "16px",
-        // marginInlineStart: "16px",
-        // WebkitMarginEnd: "16px",
-        // marginInlineEnd: "16px",
         boxShadow: "none !important",
     }
-    // const subTitleStyle = {
-    //     ion-card-subtitle 
-    // }
+
     const [isOpen, setIsOpen] = useState(false);
 
     return (

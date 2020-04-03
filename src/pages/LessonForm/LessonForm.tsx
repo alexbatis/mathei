@@ -25,8 +25,8 @@ const LessonForm: React.FC = () => {
 
 
   const submit = async (lesson) => {
-    console.log(lesson)
-    console.log('add lesson', lesson)
+    // console.log(lesson)
+    // console.log('add lesson', lesson)
     const addLessonResult = await addLesson({ variables: { input: lesson } })
     if (addLessonResult?.data?.lesson?.id)
       history.replace(`/lesson/${addLessonResult.data.lesson?.id}`)
@@ -42,7 +42,7 @@ const LessonForm: React.FC = () => {
   />
 
 
-  console.log(addLessonResult)
+  // console.log(addLessonResult)
   const lessonForm = () =>
     <IonGrid className="column-evenly" fixed={true}>
       <form onSubmit={handleSubmit(submit)}>
@@ -126,7 +126,7 @@ const LessonForm: React.FC = () => {
                   control={control}
                   onChangeName="onIonChange"
                   onChange={([selected]) => {
-                    console.log(selected)
+                    // console.log(selected)
                     return (selected.detail.value === 'on') ? ['exercise'] : []
                   }}
                   name={`translations[${index}].tags`}

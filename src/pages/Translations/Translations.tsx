@@ -44,7 +44,7 @@ const Translations: React.FC = () => {
     /* -------------------------------- CONSTANTS ------------------------------- */
 
 
-    console.log(_searchFunction, _searchDirection)
+    // console.log(_searchFunction, _searchDirection)
     const search = (e) => setSearchText(e.target.value)
 
 

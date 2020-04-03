@@ -29,12 +29,12 @@ const LoginForm: React.FC<LoginFormProps> = ({ onSubmit, googleLogin }) => {
   const { control, handleSubmit, errors, formState } = useForm({ mode: "onChange" });
 
   const _onSubmit = (data: any) => {
-    console.log(JSON.stringify(data, null, 2))
+    // console.log(JSON.stringify(data, null, 2))
   };
 
   const showError = (_fieldName: string) => {
-    console.log(_fieldName, 'touched - ' + formState.touched[_fieldName])
-    console.log(formState)
+    // console.log(_fieldName, 'touched - ' + formState.touched[_fieldName])
+    // console.log(formState)
     let error = (errors as any)[_fieldName];
     if (!formState.touched[_fieldName]) return null
     return error ? (
