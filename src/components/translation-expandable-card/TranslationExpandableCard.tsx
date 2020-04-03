@@ -23,12 +23,12 @@ const TranslationExpandableCard: React.FC<TranslationExpandableCardProps> = ({ t
     const cardStyle = {
         padding: "0",
         margin: "0 !important",
-        marginLeft: "unset",
-        marginRight: "unset",
-        WebkitMarginStart: "16px",
-        marginInlineStart: "16px",
-        WebkitMarginEnd: "16px",
-        marginInlineEnd: "16px",
+        // marginLeft: "unset",
+        // marginRight: "unset",
+        // WebkitMarginStart: "16px",
+        // marginInlineStart: "16px",
+        // WebkitMarginEnd: "16px",
+        // marginInlineEnd: "16px",
         boxShadow: "none !important",
     }
     // const subTitleStyle = {
@@ -37,7 +37,7 @@ const TranslationExpandableCard: React.FC<TranslationExpandableCardProps> = ({ t
     const [isOpen, setIsOpen] = useState(false);
 
     return (
-        <IonCard style={cardStyle}>
+        <IonCard className="no-margin" style={cardStyle}>
             <div onClick={() => setIsOpen(!isOpen)}>
                 <IonCardHeader>
                     <div className="card-title">
