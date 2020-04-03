@@ -36,16 +36,16 @@ const Lessons: React.FC = () => {
 
     /* ----------------------------- RENDER METHODS ----------------------------- */
     const pageHeader = () =>
-        <IonHeader no-border>
-            <IonToolbar>
+        <IonHeader no-border mode="md">
+            <IonToolbar mode="md">
                 <IonButtons slot="start">
-                    <IonBackButton defaultHref="/" />
+                    <IonBackButton defaultHref="/" mode="md" />
                 </IonButtons>
                 <IonTitle color="secondary">My Lessons</IonTitle>
             </IonToolbar>
         </IonHeader>
 
-    const searchAndFilters = () => <>
+    const searchAndFilters = () => <IonCol>
         <IonSearchbar onIonInput={search} animated />
         <div className="filter-container">
             <IonSelect value={searchFunction} onIonChange={e => setSearchFunction(e.detail.value)} interface="popover">
@@ -61,14 +61,14 @@ const Lessons: React.FC = () => {
                 <IonButton>
                     <IonIcon icon={more}></IonIcon>
                 </IonButton>
-            </IonButtons>;
+            </IonButtons>
         </div>
-    </>
+    </IonCol>
 
     const lessonItem = (lesson: Lesson) =>
-        <div onClick={() => history.push(`/lesson/${lesson.id}`)} key={lesson.id} className="lesson-card-container">
+        <IonCol size="12" key={lesson.id} onClick={() => history.push(`lesson/${lesson.id}`)}>
             <LessonCard lesson={lesson} />
-        </div>
+        </IonCol>
 
     const lessonList = () => lessons
         .filter(filterBySearch)
@@ -78,10 +78,8 @@ const Lessons: React.FC = () => {
     const lessonContent = () =>
         <IonGrid>
             <IonRow>
-                <IonCol>
-                    {searchAndFilters()}
-                    {lessonList()}
-                </IonCol>
+                {searchAndFilters()}
+                {lessonList()}
             </IonRow>
         </IonGrid >
 
