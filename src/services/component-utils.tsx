@@ -8,3 +8,8 @@ export const errorToast = (error?: Error, duration = 2000) =>
     isOpen={(error !== null && error !== undefined)}
     message={error?.message || 'An Error Occurred'}
     duration={duration} />
+export const genericToast = (isOpen: boolean, message: string, duration = 2000) =>
+  <IonToast
+    isOpen={isOpen}
+    message={message}
+    duration={duration} />
