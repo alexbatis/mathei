@@ -1,3 +1,4 @@
+/* eslint-disable no-useless-escape */
 /* -------------------------------------------------------------------------- */
 import { deserialize } from 'class-transformer';
 /*                              UTILITY FUNCTIONS                             */
@@ -49,4 +50,39 @@ export const getGreeting = () => {
 
 export function toClass<T>(constructor: any, json: object): T {
   return deserialize(constructor, JSON.stringify(json))
+}
+
+export function isPlayableResource(resource: string) {
+  const regExps = [
+    new RegExp(/^https?:\/\/(soundcloud\.com|snd\.sc)\/(.*)$/, 'i'), // sound cloud
+    new RegExp(/^(https?\:\/\/)?(www\.youtube\.com|youtu\.?be)\/.+$/, 'i'), // youtube,
+    new RegExp(/^(https?:\/\/)?(www\.)?facebook.com\/[a-zA-Z0-9(\.\?)?]/, 'i'), // facebook
+    new RegExp(/^(https?:\/\/)?(www\.)?facebook.com\/[a-zA-Z0-9(\.\?)?]/, 'i'), // facebook
+    new RegExp(/^(https?:\/\/)?(www\.)?streamable.com\/[a-zA-Z0-9(\.\?)?]/, 'i'), // streamable
+    new RegExp(/^(https?:\/\/)?(www\.)?wistia.com\/[a-zA-Z0-9(\.\?)?]/, 'i'), // wistia
+    new RegExp(/^(https?:\/\/)?(www\.)?Mixcloud.com\/[a-zA-Z0-9(\.\?)?]/, 'i'), // Mixcloud
+    new RegExp(/^(https?:\/\/)?(www\.)?dailymotion.com\/[a-zA-Z0-9(\.\?)?]/, 'i'), // dailymotion
+  ]
+
+  for (const regExp of regExps)
+    if (regExp.test(resource))
+      return true
+
+  return false
+}
+
+export function lightThumbnail(resource: string) {
+  // eslint-disable no-useless-escape
+  const regExps = [
+    new RegExp(/^(https?:\/\/)?(www\.)?facebook.com\/[a-zA-Z0-9(\.\?)?]/, 'i'), // facebook
+    new RegExp(/^(https?:\/\/)?(www\.)?facebook.com\/[a-zA-Z0-9(\.\?)?]/, 'i'), // facebook
+    new RegExp(/^(https?:\/\/)?(www\.)?wistia.com\/[a-zA-Z0-9(\.\?)?]/, 'i'), // wistia
+    new RegExp(/^(https?:\/\/)?(www\.)?Mixcloud.com\/[a-zA-Z0-9(\.\?)?]/, 'i'), // Mixcloud
+  ]
+
+  for (const regExp of regExps)
+    if (regExp.test(resource))
+      return 'https://blog.axelradclinic.com/wp-content/uploads/2015/06/video-thumbnail.jpg'
+
+  return true
 }

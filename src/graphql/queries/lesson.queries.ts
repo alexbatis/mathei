@@ -42,7 +42,7 @@ const deleteLessonQuery = gql`
 
 const updateLessonQuery = gql`
   mutation UpdateLessonQuery($id: ID!, $lesson: UpdateLessonInput) {
-    updateLesson(id: $id, lesson: $lesson) {
+    lesson : updateLesson(id: $id, lesson: $lesson) {
       id
       name
     }

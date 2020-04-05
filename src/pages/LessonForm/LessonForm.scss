@@ -53,3 +53,23 @@
       margin-right: 1em;
   }
 }
+
+.add-card-content {
+  cursor: pointer;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  font-size: 1.1rem !important;
+}
+
+.toolbar-container {
+  background-color: white !important;
+}
+
+ion-item {
+  --background	: transparent;
+}
+
+ion-header, ion-toolbar {
+  --background	: white;
+}

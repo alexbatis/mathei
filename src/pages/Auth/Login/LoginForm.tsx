@@ -2,9 +2,8 @@
 /*                                   IMPORTS                                  */
 /* -------------------------------------------------------------------------- */
 /* ------------------------------- THIRD PARTY ------------------------------ */
-import React, { useState } from 'react';
+import React  from 'react';
 import {
-  IonGrid,
   IonCol,
   IonRow,
   IonItem,
@@ -26,23 +25,7 @@ import { Controller, useForm } from 'react-hook-form';
 interface LoginFormProps { onSubmit: Function, googleLogin: Function }
 const LoginForm: React.FC<LoginFormProps> = ({ onSubmit, googleLogin }) => {
 
-  const { control, handleSubmit, errors, formState } = useForm({ mode: "onChange" });
-
-  const _onSubmit = (data: any) => {
-    // console.log(JSON.stringify(data, null, 2))
-  };
-
-  const showError = (_fieldName: string) => {
-    // console.log(_fieldName, 'touched - ' + formState.touched[_fieldName])
-    // console.log(formState)
-    let error = (errors as any)[_fieldName];
-    if (!formState.touched[_fieldName]) return null
-    return error ? (
-      <div style={{ color: "red", fontWeight: "bold" }}>
-        {error.message || "Field Is Required"}
-      </div>
-    ) : null;
-  };
+  const { control, handleSubmit, formState } = useForm({ mode: "onChange" });
 
   /* ----------------------------- RENDER METHODS ----------------------------- */
   const loginFormInputs = () =>

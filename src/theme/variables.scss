@@ -229,6 +229,14 @@ ion-searchbar input {
 	justify-content: space-evenly;	
 }
 
+.icon-medium {
+	font-size: 22px !important;
+}
+
+.pointer {
+	cursor: pointer;
+}
+
 
 @media (max-device-height: 568px), handheld and (orientation: portrait) {
     .modal-transparency {

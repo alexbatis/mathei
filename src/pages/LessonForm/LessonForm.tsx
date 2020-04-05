@@ -1,176 +1,206 @@
+/* -------------------------------------------------------------------------- */
+/*                                   IMPORTS                                  */
+/* -------------------------------------------------------------------------- */
+/* --------------------------------- CUSTOM --------------------------------- */
 import React, { useState } from "react";
-import { useForm, useFieldArray, Controller } from "react-hook-form";
-import { IonButton, IonLabel, IonItem, IonInput, IonRow, IonCol, IonPage, IonHeader, IonToolbar, IonButtons, IonBackButton, IonTitle, IonContent, IonGrid, IonLoading, IonToast, IonSegment, IonSegmentButton, IonCheckbox } from "@ionic/react";
-import { useMutateLesson } from "../../graphql";
-import { useHistory } from 'react-router';
-import { ExecutionResult } from "graphql";
-import { MutationResult } from '@apollo/react-common';
-
-/*
-  fix :
-    - removing a dynamic control will remove all controls
-    - add validation
-  
-*/
+import { IonButton, IonLabel, IonItem, IonInput, IonRow, IonCol, IonPage, IonHeader, IonToolbar, IonButtons, IonBackButton, IonTitle, IonContent, IonGrid, IonSegment, IonSegmentButton, IonCard, IonCardContent, IonIcon, IonFooter } from "@ionic/react";
+import { useHistory, useParams } from 'react-router';
+import { add } from "ionicons/icons";
+import { Formik, Form, FieldArray } from 'formik';
+/* --------------------------------- CUSTOM --------------------------------- */
+import './LessonForm.scss'
+import { useMutateLesson, useLesson } from "../../graphql";
+import TranslationInputCard from "./TranslationInputCard";
+import ResourcesInputCard from './ResourcesInputCard';
+import emptyLesson, { emptyTranslation, formatLesson } from "./LessonForm.utils";
+import { loadingIndicator, errorToast } from '../../services/component-utils';
 
 
+/* -------------------------------------------------------------------------- */
+/*                            COMPONENT DEFINITION                            */
+/* -------------------------------------------------------------------------- */
 const LessonForm: React.FC = () => {
+
+  /* ---------------------------------- HOOKS --------------------------------- */
+  const { lessonId } = useParams()
   const history = useHistory();
-  const { addLesson, updateLesson, addLessonResult } = useMutateLesson() // lesson?.id
-  const { control, handleSubmit, formState, triggerValidation } = useForm({
-    // defaultValues: {}; you can populate the fields by this attribute 
-  });
-  const { fields: resources, append: appendResource, remove: removeResource, } = useFieldArray({ control, name: "resources" });
-  const { fields: translations, append: appendTranslation, remove: removeTranslation } = useFieldArray({ control, name: "translations" });
+  const { lesson: initialLesson, loading: initialLessonLoading, error: initialLessonError } = useLesson(lessonId);
+  const { addLesson, updateLesson, addLessonResult, updateLessonResult } = useMutateLesson(lessonId)
+  const [activeTab, setActiveTab] = useState('words')
 
 
+  /* --------------------------------- METHODS -------------------------------- */
   const submit = async (lesson) => {
-    // console.log(lesson)
-    // console.log('add lesson', lesson)
-    const addLessonResult = await addLesson({ variables: { input: lesson } })
-    if (addLessonResult?.data?.lesson?.id)
-      history.replace(`/lesson/${addLessonResult.data.lesson?.id}`)
+    const formattedLesson = formatLesson(lesson)
+    console.log('formatted', formattedLesson)
+    const mutationResult = lessonId ?
+      await updateLesson(lessonId, formattedLesson) :
+      await addLesson({ variables: { input: formattedLesson } })
+
+    if (mutationResult?.data?.lesson?.id)
+      history.replace(`/lesson/${mutationResult.data.lesson?.id}`)
   }
 
 
-  const loadingIndicator = () => <IonLoading isOpen={true} message={'Creating your lesson'} />
-
-  const errorToast = () => <IonToast
-    isOpen={true}
-    message={addLessonResult.error?.message}
-    duration={2000}
-  />
-
-
-  // console.log(addLessonResult)
-  const lessonForm = () =>
-    <IonGrid className="column-evenly" fixed={true}>
-      <form onSubmit={handleSubmit(submit)}>
-
-        <IonRow>
-          <IonCol size-sm>
-            <IonItem>
-              <IonLabel position="floating">Lesson Name</IonLabel>
-              <Controller
-                as={IonInput}
-                control={control}
-                onChangeName="onIonChange"
-                name="name"
-                rules={{ required: true }}
-              />
-            </IonItem>
-          </IonCol>
-        </IonRow>
+  /* ----------------------------- RENDER METHODS ----------------------------- */
+  const lessonNameInput = ({ values: { values } }) =>
+    <IonRow>
+      <IonCol size-sm>
+        <IonItem>
+          <IonLabel position="floating">Lesson Name</IonLabel>
+          <IonInput
+            name="name"
+            value={values.name}
+            onIonChange={(e: any) => { values.name = e.detail.value }}
+          />
+        </IonItem>
+      </IonCol>
+    </IonRow>
 
 
-        {resources.map((item, index) => (
-          <div key={item.id}>
-            <IonCol size="12" >
-              <IonItem>
-                <IonLabel position="floating">Resource</IonLabel>
-                <Controller
-                  as={<IonInput name={`resources[${index}]`} />}
-                  control={control}
-                  onChangeName="onIonChange"
-                  defaultValue=""
-                  onChange={([selected]) => selected.detail.value}
-                  name={`resources[${index}]`}
-                  rules={{ required: true }}
-                />
-              </IonItem>
-            </IonCol>
-            <IonCol size="2">
-              <IonButton type="button" onClick={() => removeResource(index)} >
-                Remove Resource {index}
-              </IonButton>
-            </IonCol>
+  const tabSet = () =>
+    <IonRow>
+      <IonSegment value={activeTab} onIonChange={(e: any) => setActiveTab(e.detail.value)} mode="md">
+        <IonSegmentButton value="words" mode="md">
+          <IonLabel>Words</IonLabel>
+        </IonSegmentButton>
+        <IonSegmentButton value="exercises" mode="md">
+          <IonLabel>Exercises</IonLabel>
+        </IonSegmentButton>
+        <IonSegmentButton value="resources" mode="md">
+          <IonLabel>Resources</IonLabel>
+        </IonSegmentButton>
+      </IonSegment>
+    </IonRow>
+
+
+
+  const tabContent = ({ values }) => {
+    switch (activeTab) {
+      case 'words':
+        return translationsForm({ values, type: 'words' })
+      case 'exercises':
+        return translationsForm({ values, type: 'exercises' })
+      case 'resources':
+        return resourcesForm(values)
+      default:
+        return null;
+    }
+  }
+
+  const filterTranslations = (type, translation) =>
+    (type === 'exercises' && !translation.tags?.includes('exercise')) ||
+    (type === 'words' && translation.tags?.includes('exercise'))
+
+
+  const translationsForm = ({ values, type }) => <>
+    <FieldArray
+      name="translations"
+      render={arrayHelpers => <> {
+        values.translations.map((translation, index) => filterTranslations(type, translation) ? null : (
+          <div key={index}>
+            <TranslationInputCard
+              translation={translation}
+              remove={() => arrayHelpers.remove(index)}
+              update={(e) => {
+                values.translations[index][e.name] = e.value
+              }}
+            />
           </div>
         ))}
 
-        <IonButton expand="full" color="secondary" type="button" onClick={() => appendResource({})} >
-          Add Resource
-        </IonButton>
+        <IonCard className="bk-white" onClick={() => arrayHelpers.insert(values.translations.length, emptyTranslation(type))}>
+          <IonCardContent className="add-card-content">
+            <IonIcon icon={add} /> Add {type === 'words' ? 'Word' : 'Exercise'}
+          </IonCardContent>
+        </IonCard>
+      </>
+      }
+    />
+  </>
 
-        {translations.map((item, index) => (
-          <div key={`translation-${index}`}>
-            <IonCol size-md="12" size-lg="6">
-              <IonItem>
-                <IonLabel position="floating">Phrase</IonLabel>
-                <Controller
-                  as={IonInput}
-                  control={control}
-                  onChangeName="onIonChange"
-                  onChange={([selected]) => selected.detail.value}
-                  name={`translations[${index}].phrase`}
-                  rules={{ required: true }}
-                />
-              </IonItem>
-            </IonCol>
-            <IonCol size-md="12" size-lg="6">
-              <IonItem>
-                <IonLabel position="floating">Translation</IonLabel>
-                <Controller
-                  as={IonInput}
-                  control={control}
-                  onChangeName="onIonChange"
-                  onChange={([selected]) => selected.detail.value}
-                  name={`translations[${index}].translated`}
-                  rules={{ required: true }}
-                />
-              </IonItem>
-            </IonCol>
-            <IonRow>
-              <IonCol size="3">
-                <Controller
-                  as={IonCheckbox}
-                  control={control}
-                  onChangeName="onIonChange"
-                  onChange={([selected]) => {
-                    // console.log(selected)
-                    return (selected.detail.value === 'on') ? ['exercise'] : []
-                  }}
-                  name={`translations[${index}].tags`}
-                />
-                <IonLabel>Exercise</IonLabel>
-              </IonCol>
-              <IonCol size="6">
-                <IonButton type="button" onClick={() => removeTranslation(index)} >
-                  Remove Translation
-                </IonButton>
-              </IonCol>
-            </IonRow>
+  const resourcesForm = (values) => <>
+    <FieldArray
+      name="resources"
+      render={arrayHelpers => <> {
+        values.resources.map((resource, index) =>
+          <div key={index}>
+            <ResourcesInputCard
+              resource={values.resources[index]}
+              remove={() => arrayHelpers.remove(index)}
+              update={(e) => { values.resources[index] = e }}
+            />
           </div>
-        ))}
+        )}
 
-        <IonButton expand="full" color="secondary" type="button" onClick={() => appendTranslation({ phrase: '', translated: '', tags: [] })} >
-          Add Translation
-    </IonButton>
+        <IonCard className="bk-white" onClick={() => arrayHelpers.insert(values.resources.length, '')}>
+          <IonCardContent className="add-card-content">
+            <IonIcon icon={add} /> Add Resource
+          </IonCardContent>
+        </IonCard>
+      </>
+      }
+    />
+  </>
 
-        <IonButton expand="full" type="submit" >Submit</IonButton>
-      </form>
-    </IonGrid>
+  const loadingIndicators =
+    <>
+      {loadingIndicator(addLessonResult.loading, 'Creating lesson...')}
+      {loadingIndicator(updateLessonResult.loading, 'Updating lesson...')}
+      {loadingIndicator(initialLessonLoading, 'Loading lesson...')}
+    </>
 
-  return (
-    <IonPage>
-      <IonHeader>
-        <IonToolbar>
-          <IonButtons slot="start">
-            <IonBackButton defaultHref="/" />
-          </IonButtons>
-          <IonTitle color="secondary">New Lesson</IonTitle>
-        </IonToolbar>
-      </IonHeader>
-      <IonContent>
-
-        {addLessonResult.error && errorToast()}
-        {addLessonResult?.loading ? loadingIndicator() : lessonForm()}
+  const errorToasts =
+    <>
+      {errorToast(addLessonResult.error)}
+      {errorToast(updateLessonResult.error)}
+      {errorToast(initialLessonError)}
+    </>
 
 
-
-      </IonContent>
-    </IonPage>
-
+  const page = (values) => (
+    <Form>
+      <IonPage>
+        <IonHeader className="bk-white">
+          <IonToolbar className="bk-white">
+            <IonButtons slot="start">
+              <IonBackButton defaultHref="/" />
+            </IonButtons>
+            <IonTitle color="secondary">{lessonId ? 'Edit Lesson' : 'New Lesson'}</IonTitle>
+          </IonToolbar>
+          {lessonNameInput({ values })}
+          {tabSet()}
+        </IonHeader>
+        <IonContent>
+          {loadingIndicators}
+          {errorToasts}
+          <IonGrid className="column-evenly" fixed={true}>
+            {tabContent(values)}
+          </IonGrid >
+        </IonContent>
+        <IonFooter>
+          <IonToolbar>
+            <IonTitle>
+              <IonButton expand="block" type="submit" >{lessonId ? 'Update' : 'Create'} Lesson</IonButton>
+            </IonTitle>
+          </IonToolbar>
+        </IonFooter>
+      </IonPage>
+    </Form>
   )
+
+
+  return lessonId && initialLesson ?
+    <Formik
+      initialValues={initialLesson}
+      onSubmit={submit}
+      render={page}
+    /> :
+    <Formik
+      initialValues={emptyLesson}
+      onSubmit={submit}
+      render={page}
+    />
 }
 
 export default LessonForm

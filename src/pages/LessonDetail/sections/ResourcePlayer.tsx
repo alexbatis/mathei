@@ -6,10 +6,7 @@ import React from 'react';
 import ReactPlayer from 'react-player';
 /* --------------------------------- CUSTOM --------------------------------- */
 import './resource-player.scss';
-/* -------------------------------- CONSTANTS ------------------------------- */
-const soundCloudRegExp = /^https?:\/\/(soundcloud\.com|snd\.sc)\/(.*)$/;
-// eslint-disable-next-line no-useless-escape
-const youtubeRegExp = new RegExp(/^(https?\:\/\/)?(www\.youtube\.com|youtu\.?be)\/.+$/, 'i');
+import { isPlayableResource } from '../../../services/utils';
 
 
 /* -------------------------------------------------------------------------- */
@@ -19,11 +16,7 @@ interface ResourcePlayerProps { resources: Array<string> }
 const ResourcePlayer: React.FC<ResourcePlayerProps> = ({ resources }) => {
 
   // Extract first playable resource
-  let playableResource: string | null = null;
-  resources.forEach(resource => {
-    if (youtubeRegExp.test(resource) || soundCloudRegExp.test(resource))
-      playableResource = resource
-  })
+  const playableResource = resources.find(isPlayableResource)
 
   if (!playableResource) return <></>
 

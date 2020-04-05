@@ -18,7 +18,7 @@ import { Translation } from '../../models/Translation';
 
 
 /* -------------------------------------------------------------------------- */
-/*                             COMPONENT DEFNITION                            */
+/*                            COMPONENT DEFINITION                            */
 /* -------------------------------------------------------------------------- */
 interface TranslationCardProps { translation: Translation }
 const TranslationCard: React.FC<TranslationCardProps> = ({ translation }) => {

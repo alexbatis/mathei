@@ -15,7 +15,7 @@ import { translationsQueries } from '../queries/translations.queries';
 /* -------------------------------------------------------------------------- *Z
 /*                            QUERY HOOK DEFINITION                           */
 /* -------------------------------------------------------------------------- */
-export const useLesson = (id: string) => {
+export const useLesson = (id?: string) => {
   const { data, error, loading } = useQuery(lessonQueries.lessonQuery, { variables: { id } });
 
   return {
@@ -36,14 +36,15 @@ export const useMutateLesson = (id?: string) => {
     refetchQueries.push({ query: translationsQueries.translationsQuery, variables: { id } })
   }
   const [addLesson, addLessonResult] = useMutation(lessonQueries.createLessonQuery, { refetchQueries })
-  const [deleteLesson] = useMutation(lessonQueries.deleteLessonQuery, { refetchQueries })
-  const [updateLesson] = useMutation(lessonQueries.updateLessonQuery, { refetchQueries })
+  const [deleteLesson, deleteLessonResult] = useMutation(lessonQueries.deleteLessonQuery, { refetchQueries })
+  const [updateLesson, updateLessonResult] = useMutation(lessonQueries.updateLessonQuery, { refetchQueries })
 
   return {
     addLesson,
     addLessonResult,
     deleteLesson: (id: string, options: MutationHookOptions = {}) => deleteLesson(Object.assign({ variables: { id } }, options)),
+    deleteLessonResult,
     updateLesson: (id: string, lesson: object, options: MutationHookOptions = {}) => updateLesson(Object.assign({ variables: { id, lesson: stripTypenames(lesson) } }, options)),
-
+    updateLessonResult
   }
 }

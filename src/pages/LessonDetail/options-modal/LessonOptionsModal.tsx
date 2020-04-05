@@ -9,10 +9,11 @@ import { IonContent, IonGrid, IonCol, IonRow, IonButton, IonAlert } from '@ionic
 /* -------------------------------------------------------------------------- */
 /*                            COMPONENT DEFINITION                            */
 /* -------------------------------------------------------------------------- */
-interface LessonOptionsModalProps { deleteLesson: any }
-const LessonOptionsModal: React.FC<LessonOptionsModalProps> = ({ deleteLesson }) => {
+interface LessonOptionsModalProps { deleteLesson: any, editLesson: any }
+const LessonOptionsModal: React.FC<LessonOptionsModalProps> = ({ deleteLesson, editLesson }) => {
     /* ---------------------------------- HOOKS --------------------------------- */
     const [showConfirmationAlert, setShowConfirmationAlert] = useState(false);
+
 
     /* ----------------------------- RENDER METHODS ----------------------------- */
     const deleteLessonConfirmation = () => (
@@ -40,6 +41,7 @@ const LessonOptionsModal: React.FC<LessonOptionsModalProps> = ({ deleteLesson })
             <IonRow>
                 <IonCol>
                     <IonButton
+                        onClick={editLesson}
                         className="button-size center-button"
                         expand="block">
                         Edit Lesson

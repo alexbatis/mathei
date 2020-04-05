@@ -3,19 +3,13 @@
 /*                                   IMPORTS                                  */
 /* -------------------------------------------------------------------------- */
 /* ------------------------------- THIRD PARTY ------------------------------ */
-import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar, IonButtons, IonBackButton, IonGrid, IonRow, IonCol, IonButton, IonIcon, IonSearchbar, IonSelect, IonSelectOption, IonInfiniteScroll, IonInfiniteScrollContent } from '@ionic/react';
-import React, { useState } from 'react';
+import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar, IonButtons, IonBackButton,IonButton, IonIcon, IonSearchbar, IonSelect, IonSelectOption, IonInfiniteScroll, IonInfiniteScrollContent } from '@ionic/react';
+import React, { useState, useEffect } from 'react';
 import { more } from 'ionicons/icons';
 /* --------------------------------- CUSTOM --------------------------------- */
 import './Translations.scss';
 import { usePaginatedTranslations } from '../../graphql/hooks/translations.hooks';
-import TranslationCard from '../../components/translation-card/translation-card';
-import { useHistory } from 'react-router';
-import { Translation } from '../../models/Translation';
-import { customSort } from '../../services/utils';
 import NoLessons from '../../components/no-lessons/no-lessons';
-import { useEffect } from 'react';
-import TranslationExpandableCard from '../../components/translation-expandable-card/TranslationExpandableCard';
 import PhraseList from '../LessonDetail/sections/PhraseList';
 
 
@@ -24,7 +18,6 @@ import PhraseList from '../LessonDetail/sections/PhraseList';
 /* -------------------------------------------------------------------------- */
 const Translations: React.FC = () => {
     /* ---------------------------------- HOOKS --------------------------------- */
-    const history = useHistory();
     const [searchText, setSearchText] = useState("")
     const [searchFunction, setSearchFunction] = useState("createdAt-desc")
     const _searchFunction = searchFunction.substring(0, searchFunction.indexOf('-'))
@@ -80,17 +73,6 @@ const Translations: React.FC = () => {
         </div>
     </>
 
-    const translationItem = (translation: Translation) =>
-        <div onClick={() => history.push(`/lesson/${translation.lesson?.id}`)} key={translation.id} className="translation-card-container">
-            <TranslationCard translation={translation} />
-        </div>
-
-    const translationList = () => translations
-        .sort(customSort(_searchFunction, _searchDirection))
-        .map(translation => <TranslationExpandableCard key={translation.id} translation={translation} />)
-    // .map(translation => translationItem(translation))
-
-
     const translationsContent = () => <>
         {searchAndFilters()}
         {(!loading && !error && (!translations || !translations.length)) ?
@@ -98,10 +80,7 @@ const Translations: React.FC = () => {
             <PhraseList translations={translations} />
         }</>
 
-
-
-
-    const doSomething = async ($event: CustomEvent<void>) => {
+    const loadMore = async ($event: CustomEvent<void>) => {
         setTimeout(() => {
             setLimit(limit + 10);
             ($event.target as HTMLIonInfiniteScrollElement).complete();
@@ -115,7 +94,7 @@ const Translations: React.FC = () => {
             {pageHeader()}
             <IonContent>
                 {translationsContent()}
-                <IonInfiniteScroll threshold="10px" onIonInfinite={(e: CustomEvent<void>) => doSomething(e)}>
+                <IonInfiniteScroll threshold="10px" onIonInfinite={(e: CustomEvent<void>) => loadMore(e)}>
                     <IonInfiniteScrollContent loadingText="Loading more translations...">
 
                     </IonInfiniteScrollContent>
