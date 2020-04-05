@@ -4,7 +4,9 @@ import { Translation } from "../../models/Translation";
 const emptyWord = new Translation({ phrase: '', translated: '' })
 const emptyExercise = new Translation({ phrase: '', translated: '', tags: ['exercise'] })
 
-export const emptyTranslation = (type: 'words' | 'exercises' = 'words') => (type === 'words') ? emptyWord : emptyExercise
+export const emptyTranslation = (type: 'words' | 'exercises' = 'words') => (type === 'words') ?
+  new Translation(emptyWord) :
+  new Translation(emptyExercise)
 
 export const formatLesson = (lesson: Lesson) => {
 
@@ -27,8 +29,8 @@ export const formatLesson = (lesson: Lesson) => {
 
 export const emptyLesson = new Lesson({
   translations: [
-    emptyWord,
-    emptyExercise
+    new Translation(emptyWord),
+    new Translation(emptyExercise)
   ],
   resources: ['']
 })
