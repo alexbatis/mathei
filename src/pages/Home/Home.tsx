@@ -25,7 +25,7 @@ const Home: React.FC = () => {
 
 	useEffect(() => {
 		if (!hasSeenTutorial)
-			history.push('/onboarding')
+			history.push('/overview')
 	}, [hasSeenTutorial, history])
 
 

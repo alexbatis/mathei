@@ -19,7 +19,7 @@ import {
 } from '@ionic/react';
 import { arrowForward, bookmarks } from 'ionicons/icons';
 /* --------------------------------- CUSTOM --------------------------------- */
-import './Onboarding.scss';
+import './Overview.scss';
 import logo from '../../assets/brand/logo-text.png';
 import greekYt from '../../assets/screenshots/greek-yt.png';
 import spanishSc from '../../assets/screenshots/spanish-sc.png';
@@ -31,7 +31,7 @@ const duolingoIcon = "https://is2-ssl.mzstatic.com/image/thumb/Purple123/v4/cd/3
 /* -------------------------------------------------------------------------- */
 /*                            COMPONENT DEFINITION                            */
 /* -------------------------------------------------------------------------- */
-const Onboarding: React.FC = () => {
+const Overview: React.FC = () => {
 
     /* ---------------------------------- HOOKS --------------------------------- */
     const [showSkip, setShowSkip] = useState(true);
@@ -125,7 +125,6 @@ const Onboarding: React.FC = () => {
                         <IonCard className="bk-white" style={{ maxWidth: '700px' }}>
                             <IonCardContent className="centered">
                                 <h1 className="slide-title">sync your data with Duolingo</h1>
-                                {/* <IonIcon icon={colorWand} className="slide-image" size="large" /> */}
                                 <img src={duolingoIcon} alt="" className="slide-image-round" />
                                 <p>duolingo is one of the most popular and most effective ways to learn a language</p>
                                 <hr />
@@ -140,8 +139,7 @@ const Onboarding: React.FC = () => {
 
 
                     <IonSlide className="ion-grid-background-image">
-                        <img src="assets/img/ica-slidebox-img-4.png" alt="" className="slide-image" />
-                        <h2 className="slide-title">ready to go?</h2>
+                        <h1 className="slide-title">ready to go?</h1>
                         <IonButton fill="clear" onClick={startApp}>
                             Let's get started
                         <IonIcon slot="end" icon={arrowForward} />
@@ -154,4 +152,4 @@ const Onboarding: React.FC = () => {
 }
 
 
-export default Onboarding;
+export default Overview;

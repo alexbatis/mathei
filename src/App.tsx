@@ -30,7 +30,7 @@ import Login from './pages/Auth/Login/Login';
 import Register from './pages/Auth/Register/Register';
 import Settings from './pages/Settings/Settings';
 import ProfileSettings from './pages/Settings/ProfileSettings';
-import Onboarding from './pages/Tutorial/Onboarding';
+import Overview from './pages/Tutorial/Overview';
 import Category from './pages/Category';
 import Profile from './pages/Profile/Profile';
 import MyAppointments from './pages/MyAppointments';
@@ -59,7 +59,7 @@ const App: React.FC = () => (
         <IonRouterOutlet>
           <Route path="/login" component={Login} exact={true} />
           <Route path="/register" component={Register} exact={true} />
-          <Route path="/onboarding" component={Onboarding} exact={true} />
+          <Route path="/overview" component={Overview} exact={true} />
           <Route path="/home" component={userIsAuthenticated(Home)} exact={true} />
           <Route path="/settings" component={userIsAuthenticated(Settings)} exact={true} />
           <Route path="/settings/profile" component={userIsAuthenticated(ProfileSettings)} exact={true} />
