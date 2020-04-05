@@ -4,13 +4,32 @@ import { deserialize } from 'class-transformer';
 /*                              UTILITY FUNCTIONS                             */
 /* -------------------------------------------------------------------------- */
 
-export const speakWord = async (word, langCode) => {
-  const voice = window.speechSynthesis.getVoices().find(l => l.lang === langCode)
+const getVoices = async () : Promise<SpeechSynthesisVoice[]>=> {
+  return new Promise(
+    function (resolve, reject) {
+      let synth = window.speechSynthesis;
+      let id;
+
+      id = setInterval(() => {
+        if (synth.getVoices().length !== 0) {
+          resolve(synth.getVoices());
+          clearInterval(id);
+        }
+      }, 10);
+    }
+  )
+}
+
+
+export const speakWord = async (word, langCode, speed = 0.8) => {
+  const voices: SpeechSynthesisVoice[] = await getVoices()
+  const voice = voices.find(l => l.lang === langCode)
   if (!voice) return
+
 
   const utterance = new SpeechSynthesisUtterance(word);
   utterance.voice = voice;
-  utterance.rate = 0.75
+  utterance.rate = speed;
 
   // Speak the utterance
   window.speechSynthesis.speak(utterance);

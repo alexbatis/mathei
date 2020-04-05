@@ -35,8 +35,6 @@ const ResourcesInputCard: React.FC<ResourcesInputCardProps> = ({ resource, remov
 
   useEffect(() => update(resourceValue), [resourceValue, update])
 
-  console.log(resource)
-
   const previewPlayer = () => (!isPlayableResource(debouncedResourceValue)) ? null :
     <div className='player-wrapper-sm'>
       <ReactPlayer

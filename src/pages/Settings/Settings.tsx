@@ -46,6 +46,13 @@ const Settings: React.FC = () => {
                                     </IonLabel>
                                     <IonIcon slot="end" name="arrow-forward"></IonIcon>
                                 </IonItem>
+                                <IonItem onClick={() => history.push('/onboarding')} className="pointer">
+                                    <IonLabel>
+                                        <h2>Show Tutorial Again</h2>
+                                        <p>Walk through the tutorial shown upon first login</p>
+                                    </IonLabel>
+                                    <IonIcon slot="end" name="arrow-forward"></IonIcon>
+                                </IonItem>
                                 <IonItem onClick={() => history.push('/settings/about')} className="pointer">
                                     <IonLabel>
                                         <h2>About</h2>

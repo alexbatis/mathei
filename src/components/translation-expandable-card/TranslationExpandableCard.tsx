@@ -56,7 +56,7 @@ const TranslationExpandableCard: React.FC<TranslationExpandableCardProps> = ({ t
 
             {isOpen &&
                 <div className="translated-label" onClick={() => speakWord(translation.translated, 'el-GR')}>
-                    <p> {translation.translated} </p>
+                    <span> {translation.translated} </span>
                 </div>
             }
 

@@ -35,11 +35,7 @@ const Translations: React.FC = () => {
     }, [searchText])
 
     /* -------------------------------- CONSTANTS ------------------------------- */
-
-
-    // console.log(_searchFunction, _searchDirection)
     const search = (e) => setSearchText(e.target.value)
-
 
 
     /* ----------------------------- RENDER METHODS ----------------------------- */

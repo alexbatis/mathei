@@ -2,7 +2,7 @@
 /*                                   IMPORTS                                  */
 /* -------------------------------------------------------------------------- */
 /* ------------------------------- THIRD PARTY ------------------------------ */
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { IonContent, IonHeader, IonPage, IonToolbar, IonGrid, IonRow, IonCol, IonAvatar } from '@ionic/react';
 import { useSelector } from 'react-redux';
 import { useHistory } from 'react-router';
@@ -21,6 +21,13 @@ const Home: React.FC = () => {
 	/* ---------------------------------- HOOKS --------------------------------- */
 	const user = useSelector((state: AppState) => state.auth.user);
 	const history = useHistory();
+	const [hasSeenTutorial] = useState(window.localStorage['hasSeenTutorial'])
+
+	useEffect(() => {
+		if (!hasSeenTutorial)
+			history.push('/onboarding')
+	}, [hasSeenTutorial, history])
+
 
 	/* -------------------------------- CONSTANTS ------------------------------- */
 	const greeting = getGreeting()
@@ -38,10 +45,6 @@ const Home: React.FC = () => {
 								<h5>{user?.firstName}</h5>
 							</div>
 							<div className="right-side">
-								{/* <div className="inbox-icon" onClick={() => history.push("/myappointments")} >
-									<IonIcon src={inbox}></IonIcon>
-									<IonBadge >1</IonBadge>
-								</div> */}
 								<IonAvatar onClick={() => history.push("/settings")}>
 									<img src={user?.avatar || "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSueLmNAgZOiElR_Uf_YAwY_W59RyyCO9ae_kJ4YkRtZfNVft99"} alt="test" />
 								</IonAvatar>

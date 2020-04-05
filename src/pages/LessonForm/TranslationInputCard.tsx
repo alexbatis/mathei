@@ -37,7 +37,7 @@ const TranslationInputCard: React.FC<TranslationInputCardProps> = ({ translation
 
       <IonCardHeader style={cardHeaderStyle}>
         <IonCardSubtitle style={{ fontSize: '1rem' }}>
-          <IonIcon onClick={() => console.log(translation)} icon={more} className="icon-medium pointer" />
+          <IonIcon icon={more} className="icon-medium pointer" />
         </IonCardSubtitle>
         <IonCardTitle>
           <IonIcon icon={trash} className="icon-medium pointer" onClick={remove} />

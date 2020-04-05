@@ -29,9 +29,6 @@ const LessonDetail: React.FC = () => {
   const { lesson, loading: loadingLesson } = useLesson(lessonId) // error, loading 
   const { deleteLesson, deleteLessonResult } = useMutateLesson(lessonId)
 
-  console.log(lesson?.resources)
-
-
 
   const _deleteLesson = async () => {
     const deleteResult = await deleteLesson(lesson.id)
@@ -97,9 +94,9 @@ const LessonDetail: React.FC = () => {
         <IonSegmentButton value="resources" mode="md">
           <IonLabel>Resources</IonLabel>
         </IonSegmentButton>
-        <IonSegmentButton value="practice" mode="md">
+        {/* <IonSegmentButton value="practice" mode="md">
           <IonLabel>practice</IonLabel>
-        </IonSegmentButton>
+        </IonSegmentButton> */}
       </IonSegment>
     </IonRow>
 

@@ -23,3 +23,73 @@ h5 {
 	line-height: 1.5rem;
 	color: #223e5c;
 }
+
+#tutorial-page {
+
+	.ion-grid-background-image {
+		height: 100%;
+		display: flex;
+		flex-direction: column;
+		justify-content: space-around;
+			background-image: url("../../assets/back.png");
+			background-repeat: repeat;
+	}
+
+  ion-toolbar {
+    --background: transparent;
+    --border-color: transparent;
+  }
+
+  .swiper-slide {
+		display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .slide-title {
+    margin-top: 2.8rem;
+  }
+
+  .slide-image {
+		margin: auto;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+		max-width: 50%;
+	}
+
+	.slide-image-lg {
+		margin: auto;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+		max-width: 88%;
+		border-radius: 15px;
+	}
+	
+	.slide-image-round {
+		margin: auto;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+		border-radius: 2rem;
+		max-width: 50%;
+	}
+
+	.shadow {
+		box-shadow: 0 19px 38px rgba(0,0,0,0.30), 0 15px 12px rgba(0,0,0,0.22);
+	}
+
+  b {
+    font-weight: 500;
+  }
+
+  p {
+    padding: 0 40px;
+    font-size: 14px;
+    line-height: 1.5;
+    color: var(--ion-color-step-600, #60646b);
+
+    b {
+      color: var(--ion-text-color, #000000);
+    }
+  }
+
+}

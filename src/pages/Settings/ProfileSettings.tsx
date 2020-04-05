@@ -25,14 +25,9 @@ const ProfileSettings: React.FC = () => {
   const [showModal, setShowModal] = useState(false)
   const { result: updatedUser, error, loading, resolve } = usePromise<User>(null, User);
 
-  console.log('user', user)
-  console.log('updatedUser', updatedUser)
-
-
   /* --------------------------------- METHODS -------------------------------- */
 
   const submit = async () => {
-    console.log(firstName, lastName, email)
     if (!firstName || !lastName || !email) return
     resolve(AuthService.updateProfile({ firstName, lastName, email }))
   }
