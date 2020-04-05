@@ -28,7 +28,8 @@ import { ApolloProvider } from '@apollo/react-hooks';
 import Home from './pages/Home/Home';
 import Login from './pages/Auth/Login/Login';
 import Register from './pages/Auth/Register/Register';
-import Settings from './pages/Settings';
+import Settings from './pages/Settings/Settings';
+import ProfileSettings from './pages/Settings/ProfileSettings';
 import Onboarding from './pages/Tutorial/Onboarding';
 import Category from './pages/Category';
 import Profile from './pages/Profile/Profile';
@@ -43,6 +44,8 @@ import { userIsAuthenticated } from './services/auth.service';
 import apolloClient from './graphql/apollo-client';
 import Import from './pages/Import/Import';
 import env from './constants/environment';
+import Help from './pages/Settings/Help';
+import About from './pages/Settings/About';
 
 
 /* -------------------------------------------------------------------------- */
@@ -59,6 +62,9 @@ const App: React.FC = () => (
           <Route path="/onboarding" component={Onboarding} exact={true} />
           <Route path="/home" component={userIsAuthenticated(Home)} exact={true} />
           <Route path="/settings" component={userIsAuthenticated(Settings)} exact={true} />
+          <Route path="/settings/profile" component={userIsAuthenticated(ProfileSettings)} exact={true} />
+          <Route path="/settings/help" component={userIsAuthenticated(Help)} exact={true} />
+          <Route path="/settings/about" component={userIsAuthenticated(About)} exact={true} />
           <Route path="/import" component={userIsAuthenticated(Import)} exact={true} />
           <Route path="/category" component={userIsAuthenticated(Category)} exact={true} />
           <Route path="/profile" component={userIsAuthenticated(Profile)} exact={true} />

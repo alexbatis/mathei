@@ -2,7 +2,7 @@ import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar, IonButtons, IonBa
 import React from 'react';
 import './Settings.scss';
 import { useDispatch } from 'react-redux';
-import { logoutAction } from '../redux/auth/auth.actions';
+import { logoutAction } from '../../redux/auth/auth.actions';
 import { useHistory } from 'react-router';
 
 
@@ -32,49 +32,21 @@ const Settings: React.FC = () => {
                     <IonRow>
                         <IonCol>
                             <IonList>
-                                <IonItem>
+                                <IonItem onClick={() => history.push('/settings/profile')} className="pointer">
                                     <IonLabel>
                                         <h2>Personal information</h2>
                                         <p>Changes your personal information</p>
                                     </IonLabel>
                                     <IonIcon slot="end" name="arrow-forward"></IonIcon>
                                 </IonItem>
-                                <IonItem>
-                                    <IonLabel>
-                                        <h2>Payment information</h2>
-                                        <p>Manage your payment information</p>
-                                    </IonLabel>
-                                    <IonIcon slot="end" name="arrow-forward"></IonIcon>
-                                </IonItem>
-                                <IonItem>
-                                    <IonLabel>
-                                        <h2>Notifications</h2>
-                                        <p>Manage the notifications in the app</p>
-                                    </IonLabel>
-                                    <IonIcon slot="end" name="arrow-forward"></IonIcon>
-                                </IonItem>
-                                <IonItem>
-                                    <IonLabel>
-                                        <h2>Language</h2>
-                                        <p>Manage your language and geolocation values</p>
-                                    </IonLabel>
-                                    <IonIcon slot="end" name="arrow-forward"></IonIcon>
-                                </IonItem>
-                                <IonItem>
-                                    <IonLabel>
-                                        <h2>Security</h2>
-                                        <p>Manage your security settings</p>
-                                    </IonLabel>
-                                    <IonIcon slot="end" name="arrow-forward"></IonIcon>
-                                </IonItem>
-                                <IonItem>
+                                <IonItem onClick={() => history.push('/settings/help')} className="pointer">
                                     <IonLabel>
                                         <h2>Help</h2>
-                                        <p>How to and Q&A to help you</p>
+                                        <p>For facing any issues or questions</p>
                                     </IonLabel>
                                     <IonIcon slot="end" name="arrow-forward"></IonIcon>
                                 </IonItem>
-                                <IonItem>
+                                <IonItem onClick={() => history.push('/settings/about')} className="pointer">
                                     <IonLabel>
                                         <h2>About</h2>
                                         <p>General information about the app</p>

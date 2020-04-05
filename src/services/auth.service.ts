@@ -31,6 +31,13 @@ export const register = async (registerOpts: RegisterOpts): Promise<User> => {
   return toClass<User>(User, registerResponse.data)
 }
 
+interface ProfileUpdateOpts { firstName: string, lastName, email: string }
+export const updateProfile = async (registerOpts: ProfileUpdateOpts): Promise<User> => {
+  const options = { headers: { authorization: `Bearer ${getAccessToken()}` } }
+  const registerResponse = await axios.put(ENDPOINTS.auth.updateProfile, registerOpts, options)
+  return toClass<User>(User, registerResponse.data)
+}
+
 
 export const login = async (email: string, password: string): Promise<User> => {
   apolloClient.resetStore()
@@ -62,6 +69,7 @@ export const userIsAuthenticated = connectedRouterRedirect({
 export const AuthService = {
   getAccessToken,
   register,
+  updateProfile,
   login,
   loginWithGoogle,
   userIsAuthenticated

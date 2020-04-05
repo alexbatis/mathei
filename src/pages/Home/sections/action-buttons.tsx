@@ -24,6 +24,7 @@ const HomeActionButtons: React.FC = () => {
         <IonCol onClick={() => history.push("/lessons")}>
           <CardInfo
             color="green"
+            icon="User"
             name="My Lessons"
           />
         </IonCol>

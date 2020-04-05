@@ -10,7 +10,8 @@ const ENDPOINTS = {
   auth: {
     register: constructEndpoint("/auth/register"),
     login: constructEndpoint("/auth/login"),
-    googleLogin: constructEndpoint("/auth/login/google")
+    googleLogin: constructEndpoint("/auth/login/google"),
+    updateProfile: constructEndpoint("/auth/update"),
   },
   import: {
     duolingo: constructEndpoint("/api/v1/import/duolingo")
