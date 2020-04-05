@@ -22,7 +22,6 @@ import '@ionic/react/css/flex-utils.css';
 import '@ionic/react/css/display.css';
 /* Theme variables */
 import './theme/variables.scss';
-import { connectedRouterRedirect } from 'redux-auth-wrapper/history4/redirect'
 import { ApolloProvider } from '@apollo/react-hooks';
 /* --------------------------------- CUSTOM --------------------------------- */
 /* ---------------------------------- PAGES --------------------------------- */
@@ -67,6 +66,7 @@ const App: React.FC = () => (
           <Route path="/translations" component={userIsAuthenticated(Translations)} exact={true} />
           <Route path="/lesson/:lessonId" component={userIsAuthenticated(LessonDetail)} />
           <Route path="/lesson-form" component={userIsAuthenticated(LessonForm)} exact={true} />
+          <Route path="/lesson-form/:lessonId" component={userIsAuthenticated(LessonForm)} exact={true} />
           <Route path="/myappointments" component={userIsAuthenticated(MyAppointments)} exact={true} />
           <Route exact path="/" render={() => <Redirect to="/home" />} />
         </IonRouterOutlet>

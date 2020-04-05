@@ -3,12 +3,11 @@
 /* -------------------------------------------------------------------------- */
 /* ------------------------------- THIRD PARTY ------------------------------ */
 import React from 'react';
-import { IonContent, IonHeader, IonPage, IonToolbar, IonIcon, IonGrid, IonRow, IonCol, IonAvatar, IonBadge } from '@ionic/react';
+import { IonContent, IonHeader, IonPage, IonToolbar, IonGrid, IonRow, IonCol, IonAvatar } from '@ionic/react';
 import { useSelector } from 'react-redux';
 import { useHistory } from 'react-router';
 /* --------------------------------- CUSTOM --------------------------------- */
 import './Home.scss';
-import inbox from '../../assets/icons/inbox.svg';
 import { AppState } from '../../redux/root.reducer';
 import RecentLessons from '../../components/recent-lessons/recent-lessons';
 import { getGreeting } from '../../services/utils';

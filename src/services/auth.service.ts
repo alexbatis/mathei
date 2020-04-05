@@ -4,7 +4,7 @@ import { Plugins } from '@capacitor/core';
 import { store } from "../redux/store";
 import { AppState } from '../redux/root.reducer';
 import { User } from "../models/User";
-import { plainToClass, deserialize } from 'class-transformer';
+import { plainToClass } from 'class-transformer';
 import apolloClient from "../graphql/apollo-client";
 import { connectedRouterRedirect } from "redux-auth-wrapper/history4/redirect";
 import axios from 'axios';
@@ -12,7 +12,7 @@ import { toClass } from "./utils";
 
 
 axios.interceptors.response.use(response => response, error => {
-  if (error.response.status === 401)
+  if (error?.response?.status === 401)
     console.log('TODO: log user out');
 
   return Promise.reject((error?.response?.data?.message) ? new Error(error.response.data.message) : error)
