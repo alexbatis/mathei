@@ -48,7 +48,7 @@ const TranslationInputCard: React.FC<TranslationInputCardProps> = ({ translation
         <IonGrid>
           <IonRow>
             <IonCol size-xs="12" size-sm="12" size-md="12" size-lg="6">
-              <IonItem>
+              <IonItem class="bg-transparent">
                 <IonLabel position="floating">Phrase</IonLabel>
                 <IonInput
                   value={translation.phrase}
@@ -60,7 +60,7 @@ const TranslationInputCard: React.FC<TranslationInputCardProps> = ({ translation
               </IonItem>
             </IonCol>
             <IonCol size-xs="12" size-sm="12" size-md="12" size-lg="6">
-              <IonItem>
+              <IonItem class="bg-transparent">
                 <IonLabel position="floating">Translation</IonLabel>
                 <IonInput
                   value={translation.translated}

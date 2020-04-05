@@ -58,7 +58,7 @@ const ResourcesInputCard: React.FC<ResourcesInputCardProps> = ({ resource, remov
         <IonGrid>
           <IonRow>
             <IonCol size="12">
-              <IonItem>
+              <IonItem className="bg-transparent">
                 <IonLabel position="floating">Resource URL</IonLabel>
                 <IonInput
                   value={resourceValue}

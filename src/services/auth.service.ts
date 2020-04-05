@@ -12,7 +12,7 @@ import { toClass } from "./utils";
 
 
 axios.interceptors.response.use(response => response, error => {
-  if (error.response.status === 401)
+  if (error?.response?.status === 401)
     console.log('TODO: log user out');
 
   return Promise.reject((error?.response?.data?.message) ? new Error(error.response.data.message) : error)

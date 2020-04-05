@@ -46,7 +46,7 @@ const LessonForm: React.FC = () => {
   const lessonNameInput = ({ values: { values } }) =>
     <IonRow>
       <IonCol size-sm>
-        <IonItem>
+        <IonItem class="bg-transparent">
           <IonLabel position="floating">Lesson Name</IonLabel>
           <IonInput
             name="name"
@@ -161,8 +161,8 @@ const LessonForm: React.FC = () => {
   const page = (values) => (
     <Form>
       <IonPage>
-        <IonHeader className="bk-white">
-          <IonToolbar className="bk-white">
+        <IonHeader className="bg-white">
+          <IonToolbar className="bg-white">
             <IonButtons slot="start">
               <IonBackButton defaultHref="/" />
             </IonButtons>
@@ -180,9 +180,9 @@ const LessonForm: React.FC = () => {
         </IonContent>
         <IonFooter>
           <IonToolbar>
-            <IonTitle>
-              <IonButton expand="block" type="submit" >{lessonId ? 'Update' : 'Create'} Lesson</IonButton>
-            </IonTitle>
+            {/* <IonTitle> */}
+              <IonButton expand="block" type="submit" style={{margin: "0.5rem"}}>{lessonId ? 'Update' : 'Create'} Lesson</IonButton>
+            {/* </IonTitle> */}
           </IonToolbar>
         </IonFooter>
       </IonPage>

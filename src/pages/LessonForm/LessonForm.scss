@@ -66,10 +66,12 @@
   background-color: white !important;
 }
 
-ion-item {
+.bg-transparent {
+  background-color: transparent;
   --background	: transparent;
 }
 
-ion-header, ion-toolbar {
+.bg-white {
   --background	: white;
+  background-color: white;
 }

@@ -44,10 +44,10 @@ const Translations: React.FC = () => {
 
     /* ----------------------------- RENDER METHODS ----------------------------- */
     const pageHeader = () =>
-        <IonHeader no-border>
-            <IonToolbar>
+        <IonHeader no-border mode="md">
+            <IonToolbar mode="md">
                 <IonButtons slot="start">
-                    <IonBackButton defaultHref="/" />
+                    <IonBackButton defaultHref="/" mode="md" />
                 </IonButtons>
                 <IonTitle color="secondary">My Translations</IonTitle>
             </IonToolbar>
