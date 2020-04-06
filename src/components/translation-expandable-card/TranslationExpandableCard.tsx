@@ -37,7 +37,7 @@ const TranslationExpandableCard: React.FC<TranslationExpandableCardProps> = ({ t
 
     /* ---------------------------- RENDER COMPONENT ---------------------------- */
     return (
-        <IonCard className="no-margin no-shadow" style={cardStyle}>
+        <IonCard className="no-margin no-shadow clear-lines" style={cardStyle}>
             <div onClick={() => setIsOpen(!isOpen)}>
                 <IonCardHeader style={cardHeaderStyle}>
                     <div className="card-title">

@@ -14,6 +14,7 @@ import ResourcePlayer from './sections/ResourcePlayer';
 import LessonOptionsModal from './options-modal/LessonOptionsModal';
 import PhraseList from './sections/PhraseList';
 import { loadingIndicator } from '../../services/component-utils';
+import ResourceCard from '../../components/ResourceCard/ResourceCard';
 import { options } from 'ionicons/icons';
 
 
@@ -29,7 +30,6 @@ const LessonDetail: React.FC = () => {
   const [valueType, setValueType] = useState('words');
   const { lesson, loading: loadingLesson } = useLesson(lessonId) // error, loading 
   const { deleteLesson, deleteLessonResult } = useMutateLesson(lessonId)
-
 
   const _deleteLesson = async () => {
     const deleteResult = await deleteLesson(lesson.id)
@@ -55,12 +55,9 @@ const LessonDetail: React.FC = () => {
           translations={lesson.translations.filter(t => t.tags?.includes('exercise'))}
         />;
       case 'resources':
-        return <>
-          <h1>resources</h1>
-          <ul>
-            {lesson.resources?.map(resource => <li key={resource}>{resource}</li>)}
-          </ul>
-        </>
+        return <div style={{padding: '2rem'}}>
+          {lesson.resources?.map(resource => <ResourceCard resource={resource} />)}
+        </div>
       default:
         return null;
     }
@@ -78,7 +75,7 @@ const LessonDetail: React.FC = () => {
         </IonButtons>
       </IonToolbar>
       <div style={{ display: valueType === 'practice' ? 'none' : 'block' }}>
-        <ResourcePlayer resources={lesson.resources || []} />
+        <ResourcePlayer resources={lesson?.resources || []} />
       </div>
       {tabSet()}
     </IonHeader>
@@ -86,13 +83,13 @@ const LessonDetail: React.FC = () => {
   const tabSet = () =>
     <IonRow>
       <IonSegment value={valueType} onIonChange={(e: any) => setValueType(e.detail.value)} mode="md">
-        <IonSegmentButton value="words" mode="md">
+        <IonSegmentButton className="segment-button" value="words" mode="md">
           <IonLabel>Words</IonLabel>
         </IonSegmentButton>
-        <IonSegmentButton value="exercises" mode="md">
+        <IonSegmentButton className="segment-button" value="exercises" mode="md">
           <IonLabel>Exercises</IonLabel>
         </IonSegmentButton>
-        <IonSegmentButton value="resources" mode="md">
+        <IonSegmentButton className="segment-button" value="resources" mode="md">
           <IonLabel>Resources</IonLabel>
         </IonSegmentButton>
         {/* <IonSegmentButton value="practice" mode="md">
