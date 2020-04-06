@@ -60,6 +60,13 @@ const Settings: React.FC = () => {
                                     </IonLabel>
                                     <IonIcon slot="end" name="arrow-forward"></IonIcon>
                                 </IonItem>
+                                <IonItem onClick={() => history.push('/privacy-policy')} className="pointer">
+                                    <IonLabel>
+                                        <h2>Privacy Policy</h2>
+                                        <p>Apple made me have this so I could host this on the app store</p>
+                                    </IonLabel>
+                                    <IonIcon slot="end" name="arrow-forward"></IonIcon>
+                                </IonItem>
                             </IonList>
                         </IonCol>
                     </IonRow>
