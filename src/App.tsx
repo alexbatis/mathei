@@ -31,9 +31,6 @@ import Register from './pages/Auth/Register/Register';
 import Settings from './pages/Settings/Settings';
 import ProfileSettings from './pages/Settings/ProfileSettings';
 import Overview from './pages/Tutorial/Overview';
-import Category from './pages/Category';
-import Profile from './pages/Profile/Profile';
-import MyAppointments from './pages/MyAppointments';
 import Lessons from './pages/Lessons/Lessons';
 import LessonDetail from './pages/LessonDetail/LessonDetail';
 import LessonForm from './pages/LessonForm/LessonForm';
@@ -46,6 +43,7 @@ import Import from './pages/Import/Import';
 import env from './constants/environment';
 import Help from './pages/Settings/Help';
 import About from './pages/Settings/About';
+import PrivacyPolicy from './pages/Settings/PrivacyPolicy';
 
 
 /* -------------------------------------------------------------------------- */
@@ -66,14 +64,12 @@ const App: React.FC = () => (
           <Route path="/settings/help" component={userIsAuthenticated(Help)} exact={true} />
           <Route path="/settings/about" component={userIsAuthenticated(About)} exact={true} />
           <Route path="/import" component={userIsAuthenticated(Import)} exact={true} />
-          <Route path="/category" component={userIsAuthenticated(Category)} exact={true} />
-          <Route path="/profile" component={userIsAuthenticated(Profile)} exact={true} />
           <Route path="/lessons" component={userIsAuthenticated(Lessons)} exact={true} />
           <Route path="/translations" component={userIsAuthenticated(Translations)} exact={true} />
           <Route path="/lesson/:lessonId" component={userIsAuthenticated(LessonDetail)} />
           <Route path="/lesson-form" component={userIsAuthenticated(LessonForm)} exact={true} />
           <Route path="/lesson-form/:lessonId" component={userIsAuthenticated(LessonForm)} exact={true} />
-          <Route path="/myappointments" component={userIsAuthenticated(MyAppointments)} exact={true} />
+          <Route path="/privacy-policy" component={PrivacyPolicy} exact={true} />
           <Route exact path="/" render={() => <Redirect to="/home" />} />
         </IonRouterOutlet>
       </IonReactRouter>
