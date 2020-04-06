@@ -3,6 +3,7 @@
 /* -------------------------------------------------------------------------- */
 /* ------------------------------- THIRD PARTY ------------------------------ */
 import React from 'react';
+import  { trash, options } from 'ionicons/icons';
 import {
   IonCard,
   IonCardHeader,
@@ -17,7 +18,6 @@ import {
   IonRow,
   IonCardContent
 } from '@ionic/react';
-import { trash, more } from 'ionicons/icons';
 /* --------------------------------- CUSTOM --------------------------------- */
 const cardHeaderStyle = {
   backgroundColor: "#FFF",
@@ -37,7 +37,7 @@ const TranslationInputCard: React.FC<TranslationInputCardProps> = ({ translation
 
       <IonCardHeader style={cardHeaderStyle}>
         <IonCardSubtitle style={{ fontSize: '1rem' }}>
-          <IonIcon icon={more} className="icon-medium pointer" />
+          <IonIcon icon={options} className="icon-medium pointer" />
         </IonCardSubtitle>
         <IonCardTitle>
           <IonIcon icon={trash} className="icon-medium pointer" onClick={remove} />

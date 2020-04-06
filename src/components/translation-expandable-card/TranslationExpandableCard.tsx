@@ -9,12 +9,12 @@ import {
     IonCardTitle,
     IonIcon
 } from '@ionic/react';
-import { arrowDropdown } from 'ionicons/icons';
 import { Link } from 'react-router-dom';
 /* --------------------------------- CUSTOM --------------------------------- */
 import './TranslationExpandableCard.scss';
 import { Translation } from '../../models/Translation';
 import { speakWord } from '../../services/utils';
+import { chevronDown, chevronUp } from 'ionicons/icons';
 
 
 const
@@ -37,7 +37,7 @@ const TranslationExpandableCard: React.FC<TranslationExpandableCardProps> = ({ t
 
     /* ---------------------------- RENDER COMPONENT ---------------------------- */
     return (
-        <IonCard className="no-margin no-shadow" style={cardStyle}>
+        <IonCard className="no-margin no-shadow clear-lines" style={cardStyle}>
             <div onClick={() => setIsOpen(!isOpen)}>
                 <IonCardHeader style={cardHeaderStyle}>
                     <div className="card-title">
@@ -49,7 +49,7 @@ const TranslationExpandableCard: React.FC<TranslationExpandableCardProps> = ({ t
                         </div>
                     </div>
                     <div className="you-pay">
-                        <IonIcon icon={arrowDropdown} size="large" mode="md" />
+                        <IonIcon icon={isOpen ? chevronUp : chevronDown} size="large" mode="md" />
                     </div>
                 </IonCardHeader>
             </div>

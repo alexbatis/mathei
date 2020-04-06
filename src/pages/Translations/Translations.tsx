@@ -5,7 +5,7 @@
 /* ------------------------------- THIRD PARTY ------------------------------ */
 import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar, IonButtons, IonBackButton,IonButton, IonIcon, IonSearchbar, IonSelect, IonSelectOption, IonInfiniteScroll, IonInfiniteScrollContent } from '@ionic/react';
 import React, { useState, useEffect } from 'react';
-import { more } from 'ionicons/icons';
+import { options } from 'ionicons/icons';
 /* --------------------------------- CUSTOM --------------------------------- */
 import './Translations.scss';
 import { usePaginatedTranslations } from '../../graphql/hooks/translations.hooks';
@@ -63,7 +63,7 @@ const Translations: React.FC = () => {
                     <IonIcon slot="icon-only" name="apps"></IonIcon>
                 </IonButton>
                 <IonButton>
-                    <IonIcon icon={more}></IonIcon>
+                    <IonIcon icon={options}></IonIcon>
                 </IonButton>
             </IonButtons>
         </div>
