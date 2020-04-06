@@ -4,7 +4,7 @@
 /* ------------------------------- THIRD PARTY ------------------------------ */
 import { IonContent, IonHeader, IonPage, IonToolbar, IonIcon, IonRow, IonButtons, IonBackButton, IonSegment, IonSegmentButton, IonLabel, IonModal, IonTitle } from '@ionic/react';
 import React, { useState } from 'react';
-import { more } from 'ionicons/icons';
+// import { more } from 'ionicons/icons';
 import { useParams, useHistory } from 'react-router';
 /* --------------------------------- CUSTOM --------------------------------- */
 import './LessonDetail.scss';
@@ -14,6 +14,7 @@ import ResourcePlayer from './sections/ResourcePlayer';
 import LessonOptionsModal from './options-modal/LessonOptionsModal';
 import PhraseList from './sections/PhraseList';
 import { loadingIndicator } from '../../services/component-utils';
+import { options } from 'ionicons/icons';
 
 
 /* -------------------------------------------------------------------------- */
@@ -73,7 +74,7 @@ const LessonDetail: React.FC = () => {
         </IonButtons>
         <IonTitle className="offset-title">{lesson?.name}</IonTitle>
         <IonButtons slot="end">
-          <IonIcon onClick={() => { setShowModal(!showModal) }} icon={more} size="large" className="options-icon" mode="md" />
+          <IonIcon onClick={() => { setShowModal(!showModal) }} icon={options} size="large" className="options-icon" mode="md" />
         </IonButtons>
       </IonToolbar>
       <div style={{ display: valueType === 'practice' ? 'none' : 'block' }}>

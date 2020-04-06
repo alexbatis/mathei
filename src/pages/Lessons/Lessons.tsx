@@ -4,7 +4,6 @@
 /* ------------------------------- THIRD PARTY ------------------------------ */
 import React, { useState } from 'react';
 import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar, IonButtons, IonBackButton, IonGrid, IonRow, IonCol, IonButton, IonIcon, IonSearchbar, IonSelect, IonSelectOption } from '@ionic/react';
-import { more } from 'ionicons/icons';
 import { useHistory } from 'react-router';
 /* --------------------------------- CUSTOM --------------------------------- */
 import './Lessons.scss';
@@ -13,6 +12,7 @@ import { Lesson } from '../../models/Lesson';
 import { customSort } from '../../services/utils';
 import NoLessons from '../../components/no-lessons/no-lessons';
 import { useLessons } from '../../graphql';
+import { options } from 'ionicons/icons';
 
 
 /* -------------------------------------------------------------------------- */
@@ -59,7 +59,7 @@ const Lessons: React.FC = () => {
                     <IonIcon slot="icon-only" name="apps"></IonIcon>
                 </IonButton>
                 <IonButton>
-                    <IonIcon icon={more}></IonIcon>
+                    <IonIcon icon={options}></IonIcon>
                 </IonButton>
             </IonButtons>
         </div>

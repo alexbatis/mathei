@@ -11,7 +11,7 @@ import {
     IonBadge,
     IonIcon
 } from '@ionic/react';
-import { arrowForward } from 'ionicons/icons';
+import { flameOutline } from 'ionicons/icons';
 /* --------------------------------- CUSTOM --------------------------------- */
 import './translation-card.scss';
 import { Translation } from '../../models/Translation';
@@ -39,7 +39,7 @@ const TranslationCard: React.FC<TranslationCardProps> = ({ translation }) => {
                     <IonBadge className="ion-badge" color="primary">{translation.translated}</IonBadge>
                     <IonCardSubtitle>
                         {translation.lesson?.name}
-                        <IonIcon icon={arrowForward} />
+                        <IonIcon icon={flameOutline} />
                     </IonCardSubtitle>
                 </div>
             </IonCardHeader>
