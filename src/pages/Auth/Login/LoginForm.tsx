@@ -16,8 +16,6 @@ import { logoGoogle } from 'ionicons/icons';
 import { Link } from 'react-router-dom';
 import { Controller, useForm } from 'react-hook-form';
 
-/* --------------------------------- CUSTOM --------------------------------- */
-
 
 /* -------------------------------------------------------------------------- */
 /*                            COMPONENT DEFINITION                            */

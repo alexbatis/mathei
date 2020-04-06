@@ -122,17 +122,14 @@ ion-segment-button {
 	align-self: center;
 }
 
-.translated-label span {
-	color: rgba(33, 164, 114, .8);
-	font-size: 1.3rem;
-}
 
-.translated-label p {
-	font-size: 1.3rem;
-	font-weight: 600;
+.translated-label span {
+	font-size: 2rem;
+	font-weight: 500;
 	margin: 0;
-	border-bottom: 2px dotted #223e5c;
-	text-decoration: none;
+	text-decoration-line: underline;
+  text-decoration-style: dashed;
+  text-decoration-color: rgba(34, 62, 92, 0.8);
 	cursor: pointer;
 }
 

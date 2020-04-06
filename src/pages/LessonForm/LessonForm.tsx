@@ -32,7 +32,6 @@ const LessonForm: React.FC = () => {
   /* --------------------------------- METHODS -------------------------------- */
   const submit = async (lesson) => {
     const formattedLesson = formatLesson(lesson)
-    console.log('formatted', formattedLesson)
     const mutationResult = lessonId ?
       await updateLesson(lessonId, formattedLesson) :
       await addLesson({ variables: { input: formattedLesson } })
