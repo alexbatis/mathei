@@ -21,6 +21,7 @@ import '@ionic/react/css/text-transformation.css';
 import '@ionic/react/css/flex-utils.css';
 import '@ionic/react/css/display.css';
 /* Theme variables */
+import './App.scss'
 import './theme/variables.scss';
 import { ApolloProvider } from '@apollo/react-hooks';
 /* --------------------------------- CUSTOM --------------------------------- */
