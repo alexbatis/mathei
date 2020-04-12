@@ -45,7 +45,7 @@ const Home: React.FC = () => {
 								<h5>{user?.firstName}</h5>
 							</div>
 							<div className="right-side">
-								<IonAvatar onClick={() => history.push("/settings")}>
+								<IonAvatar onClick={() => history.push("/settings")} className="pointer">
 									<img src={user?.avatar || "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSueLmNAgZOiElR_Uf_YAwY_W59RyyCO9ae_kJ4YkRtZfNVft99"} alt="test" />
 								</IonAvatar>
 							</div>

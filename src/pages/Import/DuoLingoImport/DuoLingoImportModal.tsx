@@ -27,7 +27,7 @@ const DuoLingoImportModal: React.FC<DuoLingoImportModalProps> = ({ dismissModal 
 
   /* ----------------------------- RENDER METHODS ----------------------------- */
   const formContent = () =>
-    <IonGrid className="column-evenly">
+    <IonGrid className="column-evenly centered-full" style={{ maxWidth: '500px', height: '100%' }}>
       <IonRow>
         <IonCol className="mx-1">
           <IonItem className="ion-no-padding">
@@ -60,19 +60,28 @@ const DuoLingoImportModal: React.FC<DuoLingoImportModalProps> = ({ dismissModal 
 
 
   const completed = () =>
-    <div className="ion-text-center vertical-align">
-      <div>
-        <img src={success} alt="confirm" />
-        <p>Import from DuoLingo complete!</p>
-        <span>
-          {`Imported ${result?.translationsCreated} words/phrases from ${result?.lessonsCreated} lessons`}
-        </span>
+    <IonGrid className="column-evenly centered-full" style={{ maxWidth: '500px', height: '100%' }}>
+      <div className="ion-text-center vertical-align">
+        <div>
+          <img src={success} alt="confirm" />
+          <p>Import from DuoLingo complete!</p>
+          <span>
+            {`Imported ${result?.translationsCreated} words/phrases from ${result?.lessonsCreated} lessons`}
+          </span>
+          <IonButton
+            onClick={() => { dismissModal() }}
+            style={{ marginTop: "1rem" }}
+            className="button-size center-button"
+            expand="block">
+            Close
+        </IonButton>
+        </div>
       </div>
-    </div>
+    </IonGrid>
 
 
   const errorSection = () =>
-    <IonContent className="modal-cont">
+    <IonGrid className="column-evenly centered-full" style={{ maxWidth: '500px', height: '100%' }}>
       <div className="ion-text-center vertical-align">
         <div>
           <img src={duoLingoSadLogo} alt="error" style={{ maxHeight: "250px" }} />
@@ -97,12 +106,12 @@ const DuoLingoImportModal: React.FC<DuoLingoImportModalProps> = ({ dismissModal 
           </IonRow>
         </div>
       </div>
-    </IonContent >
+    </IonGrid>
 
   if (error) return errorSection()
 
   return (
-    <IonContent className="modal-cont">
+    <IonContent className="modal-cont centered-full">
       {loadingIndicator(loading, 'Importing from Duolingo...This may take some time, please hang tight :-)')}
       {result ? completed() : formContent()}
     </IonContent >

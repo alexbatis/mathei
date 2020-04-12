@@ -4,7 +4,6 @@
 /* ------------------------------- THIRD PARTY ------------------------------ */
 import { IonContent, IonHeader, IonPage, IonToolbar, IonIcon, IonRow, IonButtons, IonBackButton, IonSegment, IonSegmentButton, IonLabel, IonModal, IonTitle } from '@ionic/react';
 import React, { useState } from 'react';
-// import { more } from 'ionicons/icons';
 import { useParams, useHistory } from 'react-router';
 /* --------------------------------- CUSTOM --------------------------------- */
 import './LessonDetail.scss';
@@ -33,11 +32,16 @@ const LessonDetail: React.FC = () => {
 
   const _deleteLesson = async () => {
     const deleteResult = await deleteLesson(lesson.id)
-    if (!deleteResult.errors)
+    if (!deleteResult.errors) {
+      setShowModal(false)
       history.replace('/lessons')
+    }
 
   }
-  const editLesson = () => history.replace(`/lesson-form/${lesson.id}`)
+  const editLesson = () => {
+    setShowModal(false)
+    history.replace(`/lesson-form/${lesson.id}`)
+  }
 
 
 
@@ -55,7 +59,7 @@ const LessonDetail: React.FC = () => {
           translations={lesson.translations.filter(t => t.tags?.includes('exercise'))}
         />;
       case 'resources':
-        return <div style={{padding: '2rem'}}>
+        return <div style={{ padding: '2rem' }}>
           {lesson.resources?.map(resource => <ResourceCard resource={resource} />)}
         </div>
       default:

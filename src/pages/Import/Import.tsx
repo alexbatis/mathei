@@ -42,7 +42,7 @@ const Import: React.FC = () => {
           <DuoLingoImportModal dismissModal={() => { setShowModal(false) }} />
         </IonModal>
 
-        <IonGrid className="column-evenly ion-grid-background-image">
+        <IonGrid className="column-evenly ion-grid-background-image" style={{maxWidth : '500px'}}>
           <IonRow>
             <IonCol onClick={() => setShowModal(true)}>
               <CardInfo
