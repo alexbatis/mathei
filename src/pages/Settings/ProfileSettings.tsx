@@ -107,7 +107,7 @@ const ProfileSettings: React.FC = () => {
                     <IonItem className="bg-transparent">
                       <IonLabel position="floating">Email</IonLabel>
                       <IonInput
-                        disabled={user?.authType === 'GOOGLE'}
+                        disabled={user?.authType !== 'basic'}
                         value={email}
                         onIonChange={(e: any) => setEmail(e.detail.value)}
                       />

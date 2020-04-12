@@ -22,7 +22,7 @@ import { Lesson } from '../../models/Lesson';
 interface LessonCardProps { lesson: Lesson }
 const LessonCard: React.FC<LessonCardProps> = ({ lesson }) => {
     return (
-        <IonCard className="bk-white m-0">
+        <IonCard className="bk-white m-0 flat-card pointer">
             <IonCardHeader>
                 <div className="card-title">
                     <div>

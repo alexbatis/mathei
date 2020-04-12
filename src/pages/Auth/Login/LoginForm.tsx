@@ -29,7 +29,6 @@ const LoginForm: React.FC<LoginFormProps> = ({ onSubmit, googleLogin, appleLogin
 
   const checkForAppleLogin = () => {
     Device.getInfo().then(device => {
-      console.log('device', device)
       if (device.platform === 'ios' && !showAppleLogin)
         setShowAppleLogin(true)
     })
