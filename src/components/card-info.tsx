@@ -14,7 +14,7 @@ const CardInfo: React.FC<CardInfoProps> = ({ color, name, icon, img }) => {
 
     return (
 
-        <IonCard className="icon-card ion-text-center bk-white">
+        <IonCard className="icon-card ion-text-center bk-white ion-hover-card">
             <IonCardHeader>
                 <div className={`round-back ${color}`}>
                     {icon && <MovieIcons iconName={icon} />}

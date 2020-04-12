@@ -24,7 +24,7 @@ const LessonForm: React.FC = () => {
   /* ---------------------------------- HOOKS --------------------------------- */
   const { lessonId } = useParams()
   const history = useHistory();
-  const { lesson: initialLesson, loading: initialLessonLoading, error: initialLessonError } = useLesson(lessonId);
+  const { lesson: initialLesson, loading: initialLessonLoading } = useLesson(lessonId);
   const { addLesson, updateLesson, addLessonResult, updateLessonResult } = useMutateLesson(lessonId)
   const [activeTab, setActiveTab] = useState('words')
 
@@ -153,7 +153,6 @@ const LessonForm: React.FC = () => {
     <>
       {errorToast(addLessonResult.error)}
       {errorToast(updateLessonResult.error)}
-      {errorToast(initialLessonError)}
     </>
 
 

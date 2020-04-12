@@ -4,3 +4,11 @@
   align-items: 'center';
   display: 'flex';
 }
+
+.centered-full {
+  display: flex !important;
+  width: 100% !important;
+  height: 100% !important;
+  align-items: center !important;
+  justify-content: center !important;
+}

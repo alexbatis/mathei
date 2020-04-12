@@ -6,6 +6,7 @@ import React from 'react';
 import { IonContent, IonPage, IonGrid, IonRow, IonCol, IonImg } from '@ionic/react';
 import { useHistory } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
+import { useEffect } from 'react';
 /* --------------------------------- CUSTOM --------------------------------- */
 import './Login.scss';
 import { loginAction } from '../../../redux/auth/auth.actions';
@@ -15,8 +16,6 @@ import LoginForm from './LoginForm';
 import logo from '../../../assets/brand/logo-text.png';
 import { usePromise } from '../../../hooks/fetch.hook';
 import { loadingIndicator, errorToast } from '../../../services/component-utils';
-import { useEffect } from 'react';
-
 
 /* -------------------------------------------------------------------------- */
 /*                            COMPONENT DEFINITION                            */
@@ -30,6 +29,9 @@ const Login: React.FC = () => {
     /* -------------------------------- FUNCTIONS ------------------------------- */
     const login = ({ email, password }) => resolve(AuthService.login(email, password))
     const googleLogin = () => resolve(AuthService.loginWithGoogle())
+    const appleLogin = async () => resolve(AuthService.loginWithApple())
+
+    if(error) console.log(error)
     const loginUser = () => {
         if (!user) return
         dispatch(loginAction(user))
@@ -60,7 +62,7 @@ const Login: React.FC = () => {
                     <div style={{ width: "100%" }}>
                         <div style={{ maxWidth: "700px", marginLeft: "auto", marginRight: "auto" }}>
                             {logoSection()}
-                            <LoginForm onSubmit={login} googleLogin={googleLogin} />
+                            <LoginForm onSubmit={login} googleLogin={googleLogin} appleLogin={appleLogin} />
                         </div>
                     </div>
                 </IonGrid>

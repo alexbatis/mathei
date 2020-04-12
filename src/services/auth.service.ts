@@ -1,6 +1,6 @@
 import ENDPOINTS from "../constants/endpoints";
 import "@codetrix-studio/capacitor-google-auth";
-import { Plugins } from '@capacitor/core';
+import { Plugins } from '@capacitor/core'
 import { store } from "../redux/store";
 import { AppState } from '../redux/root.reducer';
 import { User } from "../models/User";
@@ -9,6 +9,8 @@ import apolloClient from "../graphql/apollo-client";
 import { connectedRouterRedirect } from "redux-auth-wrapper/history4/redirect";
 import axios from 'axios';
 import { toClass } from "./utils";
+const { SignInWithApple } = Plugins
+var jwtDecode = require('jwt-decode');
 
 
 axios.interceptors.response.use(response => response, error => {
@@ -46,7 +48,7 @@ export const login = async (email: string, password: string): Promise<User> => {
 }
 
 export const loginWithGoogle = async (): Promise<User> => {
-  apolloClient.resetStore()
+  apolloClient.resetStore();
   const googleResponse = await Plugins.GoogleAuth.signIn();
   const tokenBlob = new Blob([JSON.stringify({ access_token: googleResponse.authentication.accessToken }, null, 2)], { type: 'application/json' });
   const options: any = {
@@ -58,6 +60,27 @@ export const loginWithGoogle = async (): Promise<User> => {
   const loginResponse = await fetch(ENDPOINTS.auth.googleLogin, options)
   const resp: object = await loginResponse.json()
   return plainToClass(User, resp)
+}
+
+export const loginWithApple = async (): Promise<any> => {
+  apolloClient.resetStore()
+  let { response: { user, email, familyName, givenName, identityToken  } } = await SignInWithApple.Authorize()
+  if (!email && identityToken) {
+    const decodedToken = jwtDecode(identityToken)
+    email = decodedToken?.email
+  }
+  if (!email)
+    throw new Error('Could not log in. Please choose "Share My Email" when signing in via Apple')
+
+  const registerOpts = {
+    firstName: givenName,
+    lastName: familyName,
+    email,
+    password: user,
+    authType: 'APPLE'
+  }
+  const registerResponse = await axios.post(ENDPOINTS.auth.register, registerOpts)
+  return toClass<User>(User, registerResponse.data)
 }
 
 export const userIsAuthenticated = connectedRouterRedirect({
@@ -72,5 +95,6 @@ export const AuthService = {
   updateProfile,
   login,
   loginWithGoogle,
+  loginWithApple,
   userIsAuthenticated
 }
